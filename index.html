@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="SmartPBB — Sistem Informasi Manajemen PBB-P2 yang cerdas, akurat, dan terpetakan. Satu platform untuk pemutakhiran data, e-SPPT massal, dan akselerasi penagihan piutang Bapenda." />
+    content="PBBSmart! — Sistem Informasi Manajemen PBB-P2 yang cerdas, akurat, dan terpetakan. Satu platform untuk pemutakhiran data, e-SPPT massal, dan akselerasi penagihan piutang Bapenda." />
   <meta name="theme-color" content="#16222f" />
-  <title>SmartPBB — Manajemen PBB-P2 yang Terpetakan</title>
+  <title>PBBSmart! — Manajemen PBB-P2 yang Terpetakan</title>
 
   <!-- Fonts: Fraunces (civic display) + Plus Jakarta Sans (Indonesian-designed body) + JetBrains Mono (coordinate ticks) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -463,7 +463,7 @@
         <!-- brand -->
         <a href="#top" class="group flex items-center gap-2.5">
           <span class="font-display text-[1.35rem] font-700 leading-none tracking-tight">
-            Smart<span class="text-green">PBB</span>
+            PBB<span class="text-green">Smart!</span>
           </span>
         </a>
 
@@ -569,7 +569,7 @@
             style="animation-delay: 0.16s">
             Setiap bidang <strong class="font-700 text-ink">terpetakan</strong>, setiap NJOP
             <strong class="font-700 text-ink">akurat</strong>, setiap rupiah piutang
-            <strong class="font-700 text-ink">tertagih</strong>. SmartPBB menyatukan data atribut
+            <strong class="font-700 text-ink">tertagih</strong>. PBBSmart! menyatukan data atribut
             dan spasial Bapenda dalam satu platform cerdas.
           </p>
 
@@ -652,105 +652,9 @@
 
             <!-- framed map -->
             <div class="relative overflow-hidden rounded-xl border border-line-strong/60 bg-paper-2">
-              <!-- tick rules top -->
-              <div class="flex h-4 items-end justify-between border-b border-line/70 bg-paper px-2">
-                <span class="font-mono text-[8px] text-muted">0</span><span class="h-2 w-px bg-line-strong"></span><span
-                  class="font-mono text-[8px] text-muted">100</span><span class="h-2 w-px bg-line-strong"></span><span
-                  class="font-mono text-[8px] text-muted">200</span><span class="h-2 w-px bg-line-strong"></span><span
-                  class="font-mono text-[8px] text-muted">300</span><span class="h-2 w-px bg-line-strong"></span><span
-                  class="font-mono text-[8px] text-muted">400m</span>
-              </div>
-
-              <div class="relative h-[360px] sm:h-[420px]">
-                <div class="absolute inset-0 field-grid-fine"></div>
-                <div class="absolute inset-0 paper-grain opacity-60"></div>
-
-                <!-- contour curves -->
-                <svg viewBox="0 0 400 420" preserveAspectRatio="none" class="absolute inset-0 h-full w-full"
-                  fill="none">
-                  <path class="contour-draw" style="animation-delay: 0.3s" stroke="rgb(var(--c-green) / 0.35)"
-                    stroke-width="1.2" d="M-20,300 C60,260 140,320 220,280 S380,250 440,300" />
-                  <path class="contour-draw" style="animation-delay: 0.5s" stroke="rgb(var(--c-green) / 0.25)"
-                    stroke-width="1.2" d="M-20,250 C70,210 160,270 240,230 S390,200 440,250" />
-                  <path class="contour-draw" style="animation-delay: 0.7s" stroke="rgb(var(--c-blue) / 0.3)"
-                    stroke-width="1.2" d="M-20,150 C80,110 170,180 250,140 S390,110 440,150" />
-                  <path class="contour-draw" style="animation-delay: 0.9s" stroke="rgb(var(--c-rust) / 0.25)"
-                    stroke-width="1.2" d="M-20,100 C90,60 180,130 260,90 S400,60 440,100" />
-                </svg>
-
-                <!-- parcels -->
-                <div
-                  class="absolute left-[6%] top-[10%] h-[34%] w-[30%] rounded-md border-2 border-green/60 bg-green/15">
-                  <span
-                    class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-green-deep">NOP.71.020</span>
-                  <span class="absolute bottom-1.5 left-1.5 font-mono text-[8px] text-green-deep">Rp 245 jt</span>
-                  <!-- selection pin -->
-                  <span class="absolute right-2 top-2 grid h-5 w-5 place-items-center">
-                    <span class="pulse-pin absolute h-5 w-5 rounded-full bg-green/40"></span>
-                    <span class="relative h-2.5 w-2.5 rounded-full bg-green ring-2 ring-card"></span>
-                  </span>
-                </div>
-                <div class="absolute left-[42%] top-[16%] h-[40%] w-[26%] rounded-md border border-blue/50 bg-blue/10">
-                  <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-blue">ZNT · A-12</span>
-                </div>
-                <div class="absolute right-[8%] top-[8%] h-[28%] w-[24%] rounded-md border border-rust/50 bg-rust/10">
-                  <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-rust">BIDANG BARU</span>
-                  <span class="absolute bottom-1.5 right-1.5 font-mono text-[8px] text-rust">+ NJOP</span>
-                </div>
-                <div
-                  class="absolute bottom-[12%] left-[10%] h-[24%] w-[22%] rounded-md border border-line-strong bg-paper">
-                  <span class="absolute left-1.5 top-1.5 font-mono text-[8px] text-muted">NOP.71.044</span>
-                </div>
-                <div
-                  class="absolute bottom-[8%] right-[10%] h-[28%] w-[28%] rounded-md border border-green-deep/40 bg-green/5">
-                  <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-green">LUNAS ✓</span>
-                </div>
-
-                <!-- scan sweep -->
-                <div
-                  class="sweep absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-green to-transparent shadow-[0_0_12px_rgb(var(--c-green)/0.8)]">
-                </div>
-
-                <!-- north arrow -->
-                <div class="absolute right-3 top-3 flex flex-col items-center text-rust">
-                  <svg class="h-6 w-6">
-                    <use href="#i-north" />
-                  </svg>
-                  <span class="font-mono text-[8px] font-700">N</span>
-                </div>
-
-                <!-- scale bar -->
-                <div
-                  class="absolute bottom-3 left-3 flex items-center gap-2 rounded-md border border-line-strong/70 bg-card/90 px-2 py-1 backdrop-blur-sm">
-                  <span class="flex">
-                    <span class="h-1.5 w-5 bg-ink"></span>
-                    <span class="h-1.5 w-5 bg-transparent"></span>
-                    <span class="h-1.5 w-5 bg-ink"></span>
-                  </span>
-                  <span class="font-mono text-[8px] text-muted">0 — 500 m</span>
-                </div>
-
-                <!-- floating NJOP tag -->
-                <div
-                  class="float-slow absolute -right-3 top-[42%] rounded-xl border border-green/40 bg-card px-3 py-2 shadow-plot sm:-right-5">
-                  <div class="flex items-center gap-1.5">
-                    <svg class="h-3.5 w-3.5 text-green">
-                      <use href="#i-trending" />
-                    </svg>
-                    <span class="font-mono text-[9px] font-700 text-green">NJOP ↑ +12%</span>
-                  </div>
-                  <div class="mt-0.5 font-mono text-[8px] text-muted">pemutakhiran ZNT</div>
-                </div>
-              </div>
+              <img src="img-1.jpg" alt="Peta Bidang Cadastral Map"
+                class="block h-[360px] sm:h-[420px] w-full object-cover" />
             </div>
-          </div>
-
-          <!-- floating stat chips -->
-          <div
-            class="reveal absolute -left-4 bottom-6 hidden rounded-xl border border-line-strong/70 bg-card/90 px-4 py-3 shadow-plot backdrop-blur-sm sm:block"
-            style="animation-delay: 0.5s">
-            <div class="font-mono text-[9px] uppercase tracking-widest text-muted">Realisasi</div>
-            <div class="font-display text-xl font-700 text-ink">Rp 124,6 M</div>
           </div>
         </div>
       </div>
@@ -804,7 +708,7 @@
             <strong class="font-700 text-ink">tumpukan piutang bertahun-tahun</strong>.
           </p>
           <p class="mt-4 text-lg leading-relaxed text-ink-soft">
-            SmartPBB memfasilitasi Bapenda melakukan rekonsiliasi data, pemutakhiran
+            PBBSmart! memfasilitasi Bapenda melakukan rekonsiliasi data, pemutakhiran
             Zona Nilai Tanah (ZNT), hingga memetakan piutang tak tertagih secara visual dan terstruktur.
           </p>
 
@@ -1159,7 +1063,8 @@
           </div>
           <h2 class="mt-5 font-display text-3xl font-700 text-balance sm:text-[2.6rem]">PBB yang saling terhubung lintas
             instansi</h2>
-          <p class="mt-4 text-lg leading-relaxed text-ink-soft">SmartPBB tidak berdiri sendiri. API terbuka yang dijamin
+          <p class="mt-4 text-lg leading-relaxed text-ink-soft">PBBSmart! tidak berdiri sendiri. API terbuka yang
+            dijamin
             aman menghubungkan Bapenda dengan seluruh pemangku kepentingan.</p>
         </div>
 
@@ -1194,7 +1099,7 @@
             <div
               class="relative grid h-44 w-44 place-items-center rounded-full border-2 border-green/50 bg-card text-center shadow-glow">
               <div class="mt-1 font-display text-xl font-700 leading-tight text-ink">
-                Smart<span class="text-green">PBB</span>
+                PBB<span class="text-green">Smart!</span>
               </div>
             </div>
           </div>
@@ -1291,7 +1196,7 @@
       </div>
       <div
         class="mt-8 flex flex-col items-center justify-between gap-3 border-t border-line/70 pt-6 text-center md:flex-row md:text-left">
-        <p class="text-xs text-muted">&copy; <span id="year">2026</span> SmartPBB · Tata kelola Pajak Daerah &amp;
+        <p class="text-xs text-muted">&copy; <span id="year">2026</span> PBBSmart! · Tata kelola Pajak Daerah &amp;
           PBB-P2.</p>
         <p class="font-mono text-[10px] uppercase tracking-widest text-muted/70">Dirancang untuk Bapenda modern ·
           SISMIOP-ready</p>
