@@ -1,0 +1,10 @@
+# os / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.sw?
+
+# logs
+*.log
