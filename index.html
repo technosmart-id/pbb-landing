@@ -4,10 +4,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      const theme = localStorage.getItem('theme');
+      const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (theme === 'dark' || (!theme && isSystemDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
   <meta name="description"
     content="PBBSmart! — Sistem Informasi Manajemen PBB-P2 yang cerdas, akurat, dan terpetakan. Satu platform untuk pemutakhiran data, e-SPPT massal, dan akselerasi penagihan piutang Bapenda." />
   <meta name="theme-color" content="#16222f" />
   <title>PBBSmart! — Manajemen PBB-P2 yang Terpetakan</title>
+  <link rel="canonical" href="https://pbb.technosmart.id/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pbb.technosmart.id/" />
+  <meta property="og:title" content="PBBSmart! — Manajemen PBB-P2 yang Terpetakan" />
+  <meta property="og:description" content="PBBSmart! — Sistem Informasi Manajemen PBB-P2 yang cerdas, akurat, dan terpetakan. Satu platform untuk pemutakhiran data, e-SPPT massal, dan akselerasi penagihan piutang Bapenda." />
+  <meta property="og:image" content="https://pbb.technosmart.id/img-1.jpg" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:site_name" content="PBBSmart!" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://pbb.technosmart.id/" />
+  <meta name="twitter:title" content="PBBSmart! — Manajemen PBB-P2 yang Terpetakan" />
+  <meta name="twitter:description" content="PBBSmart! — Sistem Informasi Manajemen PBB-P2 yang cerdas, akurat, dan terpetakan. Satu platform untuk pemutakhiran data, e-SPPT massal, dan akselerasi penagihan piutang Bapenda." />
+  <meta name="twitter:image" content="https://pbb.technosmart.id/img-1.jpg" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PBBSmart!",
+    "operatingSystem": "All",
+    "applicationCategory": "GovernmentApplication",
+    "description": "Sistem Informasi Manajemen PBB-P2 yang cerdas, akurat, dan terpetakan. Satu platform untuk pemutakhiran data, e-SPPT massal, dan akselerasi penagihan piutang Bapenda.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "IDR"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PBBSmart!",
+    "url": "https://pbb.technosmart.id/"
+  }
+  </script>
 
   <!-- Fonts: Fraunces (civic display) + Plus Jakarta Sans (Indonesian-designed body) + JetBrains Mono (coordinate ticks) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +73,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'media',
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -83,26 +136,24 @@
       --c-gold: 156 114 18;
     }
 
-    /* ============ COLOR TOKENS — dark (OS prefers-color-scheme) ============ */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --c-paper: 10 18 29;
-        --c-paper-2: 13 22 34;
-        --c-card: 15 26 39;
-        --c-ink: 236 228 210;
-        --c-ink-soft: 196 186 164;
-        --c-muted: 139 148 164;
-        --c-line: 29 41 55;
-        --c-line-strong: 43 58 77;
-        --c-green: 70 217 138;
-        --c-green-deep: 47 168 106;
-        --c-green-soft: 14 38 25;
-        --c-blue: 140 169 255;
-        --c-blue-soft: 20 34 58;
-        --c-rust: 232 149 86;
-        --c-rust-soft: 40 26 16;
-        --c-gold: 227 189 94;
-      }
+    /* ============ COLOR TOKENS — dark ============ */
+    :root.dark {
+      --c-paper: 10 18 29;
+      --c-paper-2: 13 22 34;
+      --c-card: 15 26 39;
+      --c-ink: 236 228 210;
+      --c-ink-soft: 196 186 164;
+      --c-muted: 139 148 164;
+      --c-line: 29 41 55;
+      --c-line-strong: 43 58 77;
+      --c-green: 70 217 138;
+      --c-green-deep: 47 168 106;
+      --c-green-soft: 14 38 25;
+      --c-blue: 140 169 255;
+      --c-blue-soft: 20 34 58;
+      --c-rust: 232 149 86;
+      --c-rust-soft: 40 26 16;
+      --c-gold: 227 189 94;
     }
 
     /* ============ BASE ============ */
@@ -480,13 +531,27 @@
 
         <!-- desktop cta -->
         <div class="hidden items-center gap-3 md:flex">
-          <span
-            class="flex items-center gap-1.5 rounded-full border border-green/30 bg-green/10 px-3 py-1.5 text-xs font-600 text-green">
-            <svg class="h-3.5 w-3.5">
-              <use href="#i-check" />
+          <button id="theme-toggle" aria-label="Toggle theme"
+            class="flex items-center gap-1.5 rounded-full border border-line-strong bg-card px-2.5 py-2.5 text-xs font-600 text-ink-soft transition-all hover:text-ink hover:border-green/50">
+            <!-- Sun Icon (visible in dark mode) -->
+            <svg class="hidden dark:block h-3.5 w-3.5 text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
-            Terintegrasi ATR/BPN
-          </span>
+            <!-- Moon Icon (visible in light mode) -->
+            <svg class="block dark:hidden h-3.5 w-3.5 text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
           <a href="#kontak"
             class="group inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 text-sm font-700 text-white shadow-glow transition-all hover:bg-green-deep">
             Jadwalkan Demo
@@ -593,40 +658,13 @@
 
           <!-- trust -->
           <div class="reveal mt-12 border-t border-line/70 pt-7" style="animation-delay: 0.32s">
-            <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">Dipercaya mengelola jutaan NOP di
-              sejumlah Pemda</p>
-            <div class="mt-4 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+            <div class="flex items-center justify-center gap-3 lg:justify-start">
               <span
-                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
-                Kota Denpasar
-              </span>
-              <span
-                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
-                Kab. Tabanan
-              </span>
-              <span
-                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
-                Kab. Karangasem
-              </span>
-              <span
-                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
-                Kab. Bintan
-              </span>
-              <span
-                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
-                Kab. Karimun
-              </span>
-              <span
-                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
-                Kab. Lingga
-              </span>
-              <span
-                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
-                Kab. Lamandau
-              </span>
-              <span
-                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
-                Kab. Gunung Mas
+                class="inline-flex items-center gap-2.5 rounded-full border border-green/30 bg-green/10 px-4 py-2 text-sm font-700 text-green backdrop-blur-sm">
+                <svg class="h-4 w-4">
+                  <use href="#i-globe" />
+                </svg>
+                Dipercaya oleh banyak kabupaten/kota yang tersebar di Indonesia
               </span>
             </div>
           </div>
@@ -1244,6 +1282,28 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
       document.querySelectorAll('.reveal-on-scroll').forEach(function (el) { io.observe(el); });
+
+      // theme toggle
+      var themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+          var isDark = document.documentElement.classList.contains('dark');
+          if (isDark) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        });
+      }
+
+      // system theme listener
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+          document.documentElement.classList.toggle('dark', e.matches);
+        }
+      });
     })();
   </script>
 </body>
