@@ -1,908 +1,1346 @@
 <!doctype html>
 <html lang="id" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="SIM-PBB SMART! — Sistem Informasi Manajemen PBB-P2 yang cerdas, akurat, dan terpetakan. Satu platform untuk pemutakhiran data, e-SPPT massal, dan akselerasi penagihan piutang Bapenda."
-    />
-    <meta name="theme-color" content="#16222f" />
-    <title>SIM-PBB SMART! — Manajemen PBB-P2 yang Terpetakan</title>
 
-    <!-- Fonts: Fraunces (civic display) + Plus Jakarta Sans (Indonesian-designed body) + JetBrains Mono (coordinate ticks) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="SmartPBB — Sistem Informasi Manajemen PBB-P2 yang cerdas, akurat, dan terpetakan. Satu platform untuk pemutakhiran data, e-SPPT massal, dan akselerasi penagihan piutang Bapenda." />
+  <meta name="theme-color" content="#16222f" />
+  <title>SmartPBB — Manajemen PBB-P2 yang Terpetakan</title>
 
-    <!-- Tailwind (Play CDN) — zero-build static Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'media',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-              display: ['Fraunces', 'Georgia', 'serif'],
-              mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-            },
-            fontWeight: {
-              400: '400',
-              500: '500',
-              600: '600',
-              700: '700',
-              800: '800',
-            },
-            colors: {
-              paper: 'rgb(var(--c-paper) / <alpha-value>)',
-              'paper-2': 'rgb(var(--c-paper-2) / <alpha-value>)',
-              card: 'rgb(var(--c-card) / <alpha-value>)',
-              ink: 'rgb(var(--c-ink) / <alpha-value>)',
-              'ink-soft': 'rgb(var(--c-ink-soft) / <alpha-value>)',
-              muted: 'rgb(var(--c-muted) / <alpha-value>)',
-              line: 'rgb(var(--c-line) / <alpha-value>)',
-              'line-strong': 'rgb(var(--c-line-strong) / <alpha-value>)',
-              green: 'rgb(var(--c-green) / <alpha-value>)',
-              'green-deep': 'rgb(var(--c-green-deep) / <alpha-value>)',
-              'green-soft': 'rgb(var(--c-green-soft) / <alpha-value>)',
-              blue: 'rgb(var(--c-blue) / <alpha-value>)',
-              'blue-soft': 'rgb(var(--c-blue-soft) / <alpha-value>)',
-              rust: 'rgb(var(--c-rust) / <alpha-value>)',
-              'rust-soft': 'rgb(var(--c-rust-soft) / <alpha-value>)',
-              gold: 'rgb(var(--c-gold) / <alpha-value>)',
-            },
-            boxShadow: {
-              plot: '0 40px 80px -30px rgb(var(--c-ink) / 0.45)',
-              glow: '0 0 28px -2px rgb(var(--c-green) / 0.45)',
-            },
+  <!-- Fonts: Fraunces (civic display) + Plus Jakarta Sans (Indonesian-designed body) + JetBrains Mono (coordinate ticks) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind (Play CDN) — zero-build static Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'media',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Fraunces', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+          fontWeight: {
+            400: '400',
+            500: '500',
+            600: '600',
+            700: '700',
+            800: '800',
+          },
+          colors: {
+            paper: 'rgb(var(--c-paper) / <alpha-value>)',
+            'paper-2': 'rgb(var(--c-paper-2) / <alpha-value>)',
+            card: 'rgb(var(--c-card) / <alpha-value>)',
+            ink: 'rgb(var(--c-ink) / <alpha-value>)',
+            'ink-soft': 'rgb(var(--c-ink-soft) / <alpha-value>)',
+            muted: 'rgb(var(--c-muted) / <alpha-value>)',
+            line: 'rgb(var(--c-line) / <alpha-value>)',
+            'line-strong': 'rgb(var(--c-line-strong) / <alpha-value>)',
+            green: 'rgb(var(--c-green) / <alpha-value>)',
+            'green-deep': 'rgb(var(--c-green-deep) / <alpha-value>)',
+            'green-soft': 'rgb(var(--c-green-soft) / <alpha-value>)',
+            blue: 'rgb(var(--c-blue) / <alpha-value>)',
+            'blue-soft': 'rgb(var(--c-blue-soft) / <alpha-value>)',
+            rust: 'rgb(var(--c-rust) / <alpha-value>)',
+            'rust-soft': 'rgb(var(--c-rust-soft) / <alpha-value>)',
+            gold: 'rgb(var(--c-gold) / <alpha-value>)',
+          },
+          boxShadow: {
+            plot: '0 40px 80px -30px rgb(var(--c-ink) / 0.45)',
+            glow: '0 0 28px -2px rgb(var(--c-green) / 0.45)',
           },
         },
-      };
-    </script>
+      },
+    };
+  </script>
 
-    <style>
-      /* ============ COLOR TOKENS — light (default) ============ */
+  <style>
+    /* ============ COLOR TOKENS — light (default) ============ */
+    :root {
+      --c-paper: 245 241 230;
+      --c-paper-2: 236 230 214;
+      --c-card: 255 253 246;
+      --c-ink: 22 34 47;
+      --c-ink-soft: 58 71 84;
+      --c-muted: 108 118 130;
+      --c-line: 216 208 189;
+      --c-line-strong: 185 175 152;
+      --c-green: 28 122 77;
+      --c-green-deep: 17 90 54;
+      --c-green-soft: 224 236 226;
+      --c-blue: 35 64 143;
+      --c-blue-soft: 226 230 241;
+      --c-rust: 177 81 28;
+      --c-rust-soft: 243 228 214;
+      --c-gold: 156 114 18;
+    }
+
+    /* ============ COLOR TOKENS — dark (OS prefers-color-scheme) ============ */
+    @media (prefers-color-scheme: dark) {
       :root {
-        --c-paper: 245 241 230;
-        --c-paper-2: 236 230 214;
-        --c-card: 255 253 246;
-        --c-ink: 22 34 47;
-        --c-ink-soft: 58 71 84;
-        --c-muted: 108 118 130;
-        --c-line: 216 208 189;
-        --c-line-strong: 185 175 152;
-        --c-green: 28 122 77;
-        --c-green-deep: 17 90 54;
-        --c-green-soft: 224 236 226;
-        --c-blue: 35 64 143;
-        --c-blue-soft: 226 230 241;
-        --c-rust: 177 81 28;
-        --c-rust-soft: 243 228 214;
-        --c-gold: 156 114 18;
+        --c-paper: 10 18 29;
+        --c-paper-2: 13 22 34;
+        --c-card: 15 26 39;
+        --c-ink: 236 228 210;
+        --c-ink-soft: 196 186 164;
+        --c-muted: 139 148 164;
+        --c-line: 29 41 55;
+        --c-line-strong: 43 58 77;
+        --c-green: 70 217 138;
+        --c-green-deep: 47 168 106;
+        --c-green-soft: 14 38 25;
+        --c-blue: 140 169 255;
+        --c-blue-soft: 20 34 58;
+        --c-rust: 232 149 86;
+        --c-rust-soft: 40 26 16;
+        --c-gold: 227 189 94;
       }
-      /* ============ COLOR TOKENS — dark (OS prefers-color-scheme) ============ */
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --c-paper: 10 18 29;
-          --c-paper-2: 13 22 34;
-          --c-card: 15 26 39;
-          --c-ink: 236 228 210;
-          --c-ink-soft: 196 186 164;
-          --c-muted: 139 148 164;
-          --c-line: 29 41 55;
-          --c-line-strong: 43 58 77;
-          --c-green: 70 217 138;
-          --c-green-deep: 47 168 106;
-          --c-green-soft: 14 38 25;
-          --c-blue: 140 169 255;
-          --c-blue-soft: 20 34 58;
-          --c-rust: 232 149 86;
-          --c-rust-soft: 40 26 16;
-          --c-gold: 227 189 94;
-        }
-      }
+    }
 
-      /* ============ BASE ============ */
-      body {
-        background-color: rgb(var(--c-paper));
-        color: rgb(var(--c-ink));
-        font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        overflow-x: hidden;
-      }
-      ::selection {
-        background: rgb(var(--c-green));
-        color: #fff;
-      }
-      section[id] {
-        scroll-margin-top: 5.5rem;
-      }
-      ::-webkit-scrollbar {
-        width: 11px;
-      }
-      ::-webkit-scrollbar-track {
-        background: rgb(var(--c-paper-2));
-      }
-      ::-webkit-scrollbar-thumb {
-        background: rgb(var(--c-line-strong));
-        border: 3px solid rgb(var(--c-paper-2));
-        border-radius: 99px;
-      }
+    /* ============ BASE ============ */
+    body {
+      background-color: rgb(var(--c-paper));
+      color: rgb(var(--c-ink));
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
 
-      /* ============ CADASTRAL TEXTURE ============ */
-      .field-grid {
-        background-image:
-          linear-gradient(to right, rgb(var(--c-line) / 0.6) 1px, transparent 1px),
-          linear-gradient(to bottom, rgb(var(--c-line) / 0.6) 1px, transparent 1px);
-        background-size: 28px 28px;
-      }
-      .field-grid-fine {
-        background-image:
-          linear-gradient(to right, rgb(var(--c-line) / 0.45) 1px, transparent 1px),
-          linear-gradient(to bottom, rgb(var(--c-line) / 0.45) 1px, transparent 1px);
-        background-size: 14px 14px;
-      }
-      .paper-grain {
-        background-image: radial-gradient(rgb(var(--c-ink) / 0.05) 1px, transparent 1px);
-        background-size: 4px 4px;
-      }
-      .text-balance {
-        text-wrap: balance;
-      }
+    ::selection {
+      background: rgb(var(--c-green));
+      color: #fff;
+    }
 
-      /* ============ ENTRANCE ============ */
-      .reveal {
-        opacity: 0;
-        transform: translateY(22px);
-        animation: reveal-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-      }
-      @keyframes reveal-up {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .reveal-scale {
-        opacity: 0;
-        transform: scale(0.95);
-        animation: reveal-scale 0.95s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-      }
-      @keyframes reveal-scale {
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-      .reveal-on-scroll {
-        opacity: 0;
-        transform: translateY(26px);
-        transition:
-          opacity 0.85s cubic-bezier(0.2, 0.7, 0.2, 1),
-          transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
-      }
-      .reveal-on-scroll.in {
+    section[id] {
+      scroll-margin-top: 5.5rem;
+    }
+
+    ::-webkit-scrollbar {
+      width: 11px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgb(var(--c-paper-2));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgb(var(--c-line-strong));
+      border: 3px solid rgb(var(--c-paper-2));
+      border-radius: 99px;
+    }
+
+    /* ============ CADASTRAL TEXTURE ============ */
+    .field-grid {
+      background-image:
+        linear-gradient(to right, rgb(var(--c-line) / 0.6) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(var(--c-line) / 0.6) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .field-grid-fine {
+      background-image:
+        linear-gradient(to right, rgb(var(--c-line) / 0.45) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(var(--c-line) / 0.45) 1px, transparent 1px);
+      background-size: 14px 14px;
+    }
+
+    .paper-grain {
+      background-image: radial-gradient(rgb(var(--c-ink) / 0.05) 1px, transparent 1px);
+      background-size: 4px 4px;
+    }
+
+    .text-balance {
+      text-wrap: balance;
+    }
+
+    /* ============ ENTRANCE ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      animation: reveal-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+
+    @keyframes reveal-up {
+      to {
         opacity: 1;
-        transform: none;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95);
+      animation: reveal-scale 0.95s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+
+    @keyframes reveal-scale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(26px);
+      transition:
+        opacity 0.85s cubic-bezier(0.2, 0.7, 0.2, 1),
+        transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .reveal-on-scroll.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ============ MAP MOTION ============ */
+    .contour-draw {
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 1400;
+      animation: draw 4.5s ease-out forwards;
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .sweep {
+      animation: sweep 6.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes sweep {
+      0% {
+        transform: translateY(-12%);
+        opacity: 0;
       }
 
-      /* ============ MAP MOTION ============ */
-      .contour-draw {
-        stroke-dasharray: 1400;
-        stroke-dashoffset: 1400;
-        animation: draw 4.5s ease-out forwards;
-      }
-      @keyframes draw {
-        to {
-          stroke-dashoffset: 0;
-        }
-      }
-      .sweep {
-        animation: sweep 6.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-      }
-      @keyframes sweep {
-        0% {
-          transform: translateY(-12%);
-          opacity: 0;
-        }
-        12% {
-          opacity: 0.85;
-        }
-        88% {
-          opacity: 0.85;
-        }
-        100% {
-          transform: translateY(112%);
-          opacity: 0;
-        }
-      }
-      .pulse-pin {
-        animation: pulse-pin 2.6s ease-in-out infinite;
-      }
-      @keyframes pulse-pin {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 0.5;
-        }
-        50% {
-          transform: scale(2);
-          opacity: 0;
-        }
-      }
-      .float-slow {
-        animation: float-slow 6s ease-in-out infinite;
-      }
-      @keyframes float-slow {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-9px);
-        }
-      }
-      .spin-slow {
-        animation: spin-slow 40s linear infinite;
-      }
-      @keyframes spin-slow {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      .beam {
-        animation: beam 3.5s ease-in-out infinite;
-      }
-      @keyframes beam {
-        0%,
-        100% {
-          opacity: 0.25;
-        }
-        50% {
-          opacity: 0.8;
-        }
+      12% {
+        opacity: 0.85;
       }
 
-      /* link underline sweep */
-      .nav-link {
-        position: relative;
-      }
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        height: 1.5px;
-        width: 100%;
-        background: rgb(var(--c-green));
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.3s ease;
-      }
-      .nav-link:hover::after {
-        transform: scaleX(1);
+      88% {
+        opacity: 0.85;
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.001ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.001ms !important;
-        }
-        .reveal,
-        .reveal-scale,
-        .reveal-on-scroll {
-          opacity: 1 !important;
-          transform: none !important;
-        }
+      100% {
+        transform: translateY(112%);
+        opacity: 0;
       }
-    </style>
-  </head>
+    }
 
-  <body>
-    <!-- ===================== SVG ICON SPRITE ===================== -->
-    <svg width="0" height="0" class="absolute" aria-hidden="true">
-      <defs>
-        <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10" /><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
-        </symbol>
-        <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6" /><line x1="9" y1="3" x2="9" y2="18" /><line x1="15" y1="6" x2="15" y2="21" />
-        </symbol>
-        <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><line x1="10" y1="9" x2="8" y2="9" />
-        </symbol>
-        <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-        </symbol>
-        <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" />
-        </symbol>
-        <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
-        </symbol>
-        <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
-        </symbol>
-        <symbol id="i-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
-        </symbol>
-        <symbol id="i-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
-        </symbol>
-        <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" />
-        </symbol>
-        <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-        </symbol>
-        <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="4" y="2" width="16" height="20" rx="2" /><path d="M9 22v-4h6v4" /><line x1="8" y1="6" x2="8" y2="6" /><line x1="12" y1="6" x2="12" y2="6" /><line x1="16" y1="6" x2="16" y2="6" /><line x1="8" y1="10" x2="8" y2="10" /><line x1="12" y1="10" x2="12" y2="10" /><line x1="16" y1="10" x2="16" y2="10" /><line x1="8" y1="14" x2="8" y2="14" /><line x1="12" y1="14" x2="12" y2="14" /><line x1="16" y1="14" x2="16" y2="14" />
-        </symbol>
-        <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />
-        </symbol>
-        <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" />
-        </symbol>
-        <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
-        </symbol>
-        <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
-        </symbol>
-        <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-        </symbol>
-        <symbol id="i-north" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 3 17 16 12 12.5 7 16 12 3" />
-        </symbol>
-      </defs>
-    </svg>
+    .pulse-pin {
+      animation: pulse-pin 2.6s ease-in-out infinite;
+    }
 
-    <!-- ===================== NAVBAR ===================== -->
-    <nav id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-          <!-- brand -->
-          <a href="#top" class="group flex items-center gap-2.5">
-            <span class="relative grid h-10 w-10 place-items-center rounded-xl border border-line-strong/70 bg-card shadow-sm">
-              <svg class="h-5 w-5 text-green"><use href="#i-compass" /></svg>
-              <span class="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-rust"></span>
-            </span>
-            <span class="font-display text-[1.35rem] font-700 leading-none tracking-tight">
-              SIM-PBB<span class="text-green"> SMART!</span>
-            </span>
+    @keyframes pulse-pin {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    .float-slow {
+      animation: float-slow 6s ease-in-out infinite;
+    }
+
+    @keyframes float-slow {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-9px);
+      }
+    }
+
+    .spin-slow {
+      animation: spin-slow 40s linear infinite;
+    }
+
+    @keyframes spin-slow {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .beam {
+      animation: beam 3.5s ease-in-out infinite;
+    }
+
+    @keyframes beam {
+
+      0%,
+      100% {
+        opacity: 0.25;
+      }
+
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    /* link underline sweep */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 1.5px;
+      width: 100%;
+      background: rgb(var(--c-green));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      .reveal,
+      .reveal-scale,
+      .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===================== SVG ICON SPRITE ===================== -->
+  <svg width="0" height="0" class="absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+      </symbol>
+      <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6" />
+        <line x1="9" y1="3" x2="9" y2="18" />
+        <line x1="15" y1="6" x2="15" y2="21" />
+      </symbol>
+      <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+        <line x1="10" y1="9" x2="8" y2="9" />
+      </symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polyline points="9 12 11 14 15 10" />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+        <polyline points="22 4 12 14.01 9 11.01" />
+      </symbol>
+      <symbol id="i-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" />
+        <rect x="14" y="3" width="7" height="7" />
+        <rect x="14" y="14" width="7" height="7" />
+        <rect x="3" y="14" width="7" height="7" />
+      </symbol>
+      <symbol id="i-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+        <polyline points="17 6 23 6 23 12" />
+      </symbol>
+      <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1" y="4" width="22" height="16" rx="2" />
+        <line x1="1" y1="10" x2="23" y2="10" />
+      </symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </symbol>
+      <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="2" width="16" height="20" rx="2" />
+        <path d="M9 22v-4h6v4" />
+        <line x1="8" y1="6" x2="8" y2="6" />
+        <line x1="12" y1="6" x2="12" y2="6" />
+        <line x1="16" y1="6" x2="16" y2="6" />
+        <line x1="8" y1="10" x2="8" y2="10" />
+        <line x1="12" y1="10" x2="12" y2="10" />
+        <line x1="16" y1="10" x2="16" y2="10" />
+        <line x1="8" y1="14" x2="8" y2="14" />
+        <line x1="12" y1="14" x2="12" y2="14" />
+        <line x1="16" y1="14" x2="16" y2="14" />
+      </symbol>
+      <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" />
+      </symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+        <polyline points="2 17 12 22 22 17" />
+        <polyline points="2 12 12 17 22 12" />
+      </symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </symbol>
+      <symbol id="i-north" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 3 17 16 12 12.5 7 16 12 3" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <!-- brand -->
+        <a href="#top" class="group flex items-center gap-2.5">
+          <span class="font-display text-[1.35rem] font-700 leading-none tracking-tight">
+            Smart<span class="text-green">PBB</span>
+          </span>
+        </a>
+
+        <!-- desktop links -->
+        <div class="hidden items-center gap-8 md:flex">
+          <a href="#piutang"
+            class="nav-link text-sm font-600 text-ink-soft transition-colors hover:text-ink">Pemutakhiran</a>
+          <a href="#fitur" class="nav-link text-sm font-600 text-ink-soft transition-colors hover:text-ink">Modul
+            Inti</a>
+          <a href="#ekosistem"
+            class="nav-link text-sm font-600 text-ink-soft transition-colors hover:text-ink">Ekosistem</a>
+          <a href="#kontak" class="nav-link text-sm font-600 text-ink-soft transition-colors hover:text-ink">Kontak</a>
+        </div>
+
+        <!-- desktop cta -->
+        <div class="hidden items-center gap-3 md:flex">
+          <span
+            class="flex items-center gap-1.5 rounded-full border border-green/30 bg-green/10 px-3 py-1.5 text-xs font-600 text-green">
+            <svg class="h-3.5 w-3.5">
+              <use href="#i-check" />
+            </svg>
+            Terintegrasi ATR/BPN
+          </span>
+          <a href="#kontak"
+            class="group inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 text-sm font-700 text-white shadow-glow transition-all hover:bg-green-deep">
+            Jadwalkan Demo
+            <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5">
+              <use href="#i-arrow" />
+            </svg>
           </a>
-
-          <!-- desktop links -->
-          <div class="hidden items-center gap-8 md:flex">
-            <a href="#piutang" class="nav-link text-sm font-600 text-ink-soft transition-colors hover:text-ink">Pemutakhiran</a>
-            <a href="#fitur" class="nav-link text-sm font-600 text-ink-soft transition-colors hover:text-ink">Modul Inti</a>
-            <a href="#ekosistem" class="nav-link text-sm font-600 text-ink-soft transition-colors hover:text-ink">Ekosistem</a>
-            <a href="#kontak" class="nav-link text-sm font-600 text-ink-soft transition-colors hover:text-ink">Kontak</a>
-          </div>
-
-          <!-- desktop cta -->
-          <div class="hidden items-center gap-3 md:flex">
-            <span class="flex items-center gap-1.5 rounded-full border border-green/30 bg-green/10 px-3 py-1.5 text-xs font-600 text-green">
-              <svg class="h-3.5 w-3.5"><use href="#i-check" /></svg>
-              Terintegrasi ATR/BPN
-            </span>
-            <a href="#kontak" class="group inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 text-sm font-700 text-white shadow-glow transition-all hover:bg-green-deep">
-              Jadwalkan Demo
-              <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5"><use href="#i-arrow" /></svg>
-            </a>
-          </div>
-
-          <!-- mobile toggle -->
-          <button id="menu-btn" aria-label="Buka menu" class="grid h-10 w-10 place-items-center rounded-lg border border-line-strong/60 bg-card md:hidden">
-            <svg class="h-5 w-5 text-ink"><use href="#i-menu" /></svg>
-          </button>
         </div>
-      </div>
 
-      <!-- mobile panel -->
-      <div id="mobile-menu" class="hidden border-t border-line/70 bg-paper/95 backdrop-blur-md md:hidden">
-        <div class="space-y-1 px-4 py-4">
-          <a href="#piutang" class="mobile-link block rounded-lg px-3 py-2.5 text-sm font-600 text-ink-soft hover:bg-paper-2">Pemutakhiran Data</a>
-          <a href="#fitur" class="mobile-link block rounded-lg px-3 py-2.5 text-sm font-600 text-ink-soft hover:bg-paper-2">Modul Inti</a>
-          <a href="#ekosistem" class="mobile-link block rounded-lg px-3 py-2.5 text-sm font-600 text-ink-soft hover:bg-paper-2">Ekosistem</a>
-          <a href="#kontak" class="mobile-link mt-2 flex items-center justify-center gap-2 rounded-full bg-green px-5 py-3 text-sm font-700 text-white">Jadwalkan Demo <svg class="h-4 w-4"><use href="#i-arrow" /></svg></a>
-        </div>
+        <!-- mobile toggle -->
+        <button id="menu-btn" aria-label="Buka menu"
+          class="grid h-10 w-10 place-items-center rounded-lg border border-line-strong/60 bg-card md:hidden">
+          <svg class="h-5 w-5 text-ink">
+            <use href="#i-menu" />
+          </svg>
+        </button>
       </div>
-    </nav>
+    </div>
 
-    <main id="top">
-      <!-- ============================================================
+    <!-- mobile panel -->
+    <div id="mobile-menu" class="hidden border-t border-line/70 bg-paper/95 backdrop-blur-md md:hidden">
+      <div class="space-y-1 px-4 py-4">
+        <a href="#piutang"
+          class="mobile-link block rounded-lg px-3 py-2.5 text-sm font-600 text-ink-soft hover:bg-paper-2">Pemutakhiran
+          Data</a>
+        <a href="#fitur"
+          class="mobile-link block rounded-lg px-3 py-2.5 text-sm font-600 text-ink-soft hover:bg-paper-2">Modul
+          Inti</a>
+        <a href="#ekosistem"
+          class="mobile-link block rounded-lg px-3 py-2.5 text-sm font-600 text-ink-soft hover:bg-paper-2">Ekosistem</a>
+        <a href="#kontak"
+          class="mobile-link mt-2 flex items-center justify-center gap-2 rounded-full bg-green px-5 py-3 text-sm font-700 text-white">Jadwalkan
+          Demo <svg class="h-4 w-4">
+            <use href="#i-arrow" />
+          </svg></a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- ============================================================
            HERO
            ============================================================ -->
-      <section class="relative overflow-hidden border-b border-line/70 pb-20 pt-28 lg:pb-32 lg:pt-40">
-        <!-- atmosphere -->
-        <div class="pointer-events-none absolute inset-0 field-grid opacity-60"></div>
-        <div class="pointer-events-none absolute inset-0 paper-grain opacity-50"></div>
-        <div class="pointer-events-none absolute left-1/2 top-1/3 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-green/10 blur-[130px]"></div>
-        <!-- coordinate corner ticks -->
-        <span class="pointer-events-none absolute left-6 top-24 font-mono text-[10px] tracking-widest text-muted/70">N 08°39′ · E 115°13′</span>
-        <span class="pointer-events-none absolute right-6 top-24 font-mono text-[10px] tracking-widest text-muted/70">SKALA 1 : 1000</span>
+    <section class="relative overflow-hidden border-b border-line/70 pb-20 pt-28 lg:pb-32 lg:pt-40">
+      <!-- atmosphere -->
+      <div class="pointer-events-none absolute inset-0 field-grid opacity-60"></div>
+      <div class="pointer-events-none absolute inset-0 paper-grain opacity-50"></div>
+      <div
+        class="pointer-events-none absolute left-1/2 top-1/3 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-green/10 blur-[130px]">
+      </div>
+      <!-- coordinate corner ticks -->
+      <span class="pointer-events-none absolute left-6 top-24 font-mono text-[10px] tracking-widest text-muted/70">N
+        08°39′ · E 115°13′</span>
+      <span
+        class="pointer-events-none absolute right-6 top-24 font-mono text-[10px] tracking-widest text-muted/70">SKALA 1
+        : 1000</span>
 
-        <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-          <!-- copy -->
-          <div class="text-center lg:text-left">
-            <div class="reveal inline-flex items-center gap-2 rounded-full border border-line-strong/70 bg-card/70 px-4 py-1.5 text-xs font-600 uppercase tracking-[0.15em] text-green backdrop-blur-sm">
-              <svg class="h-3.5 w-3.5"><use href="#i-target" /></svg>
-              Optimalisasi PAD · Sektor PBB-P2
-            </div>
-
-            <h1 class="reveal mt-6 font-display text-[2.6rem] font-700 leading-[1.02] tracking-tight text-balance sm:text-6xl lg:text-[4.4rem]" style="animation-delay: 0.08s">
-              Kelola PBB-P2 dengan
-              <span class="relative whitespace-nowrap text-green">
-                <em class="font-500 italic">presisi</em>
-              </span>
-              seorang juru ukur.
-            </h1>
-
-            <p class="reveal mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft lg:mx-0" style="animation-delay: 0.16s">
-              Setiap bidang <strong class="font-700 text-ink">terpetakan</strong>, setiap NJOP
-              <strong class="font-700 text-ink">akurat</strong>, setiap rupiah piutang
-              <strong class="font-700 text-ink">tertagih</strong>. SIM-PBB SMART! menyatukan data atribut
-              dan spasial Bapenda dalam satu platform cerdas.
-            </p>
-
-            <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start" style="animation-delay: 0.24s">
-              <a href="#kontak" class="group inline-flex items-center justify-center gap-2 rounded-full bg-green px-7 py-3.5 text-base font-700 text-white shadow-glow transition-all hover:bg-green-deep">
-                <svg class="h-5 w-5"><use href="#i-trending" /></svg>
-                Tingkatkan Realisasi PAD
-              </a>
-              <a href="#fitur" class="inline-flex items-center justify-center gap-2 rounded-full border border-line-strong/70 bg-card/60 px-7 py-3.5 text-base font-700 text-ink backdrop-blur-sm transition-all hover:border-green/50 hover:text-green">
-                <svg class="h-5 w-5 text-green"><use href="#i-map" /></svg>
-                Jelajahi Modul Spasial
-              </a>
-            </div>
-
-            <!-- trust -->
-            <div class="reveal mt-12 border-t border-line/70 pt-7" style="animation-delay: 0.32s">
-              <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">Dipercaya mengelola jutaan NOP di sejumlah Pemda</p>
-              <div class="mt-4 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-                <span class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm"><svg class="h-4 w-4 text-green"><use href="#i-shield" /></svg>Kota Denpasar</span>
-                <span class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm"><svg class="h-4 w-4 text-green"><use href="#i-shield" /></svg>Kab. Tabanan</span>
-                <span class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm"><svg class="h-4 w-4 text-green"><use href="#i-shield" /></svg>Kab. Karangasem</span>
-              </div>
-            </div>
+      <div
+        class="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+        <!-- copy -->
+        <div class="text-center lg:text-left">
+          <div
+            class="reveal inline-flex items-center gap-2 rounded-full border border-line-strong/70 bg-card/70 px-4 py-1.5 text-xs font-600 uppercase tracking-[0.15em] text-green backdrop-blur-sm">
+            <svg class="h-3.5 w-3.5">
+              <use href="#i-target" />
+            </svg>
+            Optimalisasi PAD · Sektor PBB-P2
           </div>
 
-          <!-- HERO CADASTRAL MAP -->
-          <div class="reveal-scale relative" style="animation-delay: 0.2s">
-            <div class="pointer-events-none absolute -inset-6 rounded-[2rem] bg-green/15 blur-[70px]"></div>
+          <h1
+            class="reveal mt-6 font-display text-[2.6rem] font-700 leading-[1.02] tracking-tight text-balance sm:text-6xl lg:text-[4.4rem]"
+            style="animation-delay: 0.08s">
+            Kelola PBB dengan
+            <span class="relative whitespace-nowrap text-green">
+              <em class="font-500 italic">presisi</em>
+            </span>.
+          </h1>
 
-            <div class="relative rounded-[1.4rem] border-2 border-line-strong/70 bg-card p-2.5 shadow-plot">
-              <!-- panel header -->
-              <div class="flex items-center justify-between px-2 pb-2 pt-1">
-                <div class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                  <svg class="h-3.5 w-3.5 text-green"><use href="#i-map" /></svg>
-                  Peta Bidang · Zona Nilai Tanah
-                </div>
-                <span class="beam flex items-center gap-1 rounded-full bg-green/15 px-2 py-0.5 text-[10px] font-600 text-green"><span class="h-1.5 w-1.5 rounded-full bg-green"></span>LIVE</span>
-              </div>
-
-              <!-- framed map -->
-              <div class="relative overflow-hidden rounded-xl border border-line-strong/60 bg-paper-2">
-                <!-- tick rules top -->
-                <div class="flex h-4 items-end justify-between border-b border-line/70 bg-paper px-2">
-                  <span class="font-mono text-[8px] text-muted">0</span><span class="h-2 w-px bg-line-strong"></span><span class="font-mono text-[8px] text-muted">100</span><span class="h-2 w-px bg-line-strong"></span><span class="font-mono text-[8px] text-muted">200</span><span class="h-2 w-px bg-line-strong"></span><span class="font-mono text-[8px] text-muted">300</span><span class="h-2 w-px bg-line-strong"></span><span class="font-mono text-[8px] text-muted">400m</span>
-                </div>
-
-                <div class="relative h-[360px] sm:h-[420px]">
-                  <div class="absolute inset-0 field-grid-fine"></div>
-                  <div class="absolute inset-0 paper-grain opacity-60"></div>
-
-                  <!-- contour curves -->
-                  <svg viewBox="0 0 400 420" preserveAspectRatio="none" class="absolute inset-0 h-full w-full" fill="none">
-                    <path class="contour-draw" style="animation-delay: 0.3s" stroke="rgb(var(--c-green) / 0.35)" stroke-width="1.2" d="M-20,300 C60,260 140,320 220,280 S380,250 440,300" />
-                    <path class="contour-draw" style="animation-delay: 0.5s" stroke="rgb(var(--c-green) / 0.25)" stroke-width="1.2" d="M-20,250 C70,210 160,270 240,230 S390,200 440,250" />
-                    <path class="contour-draw" style="animation-delay: 0.7s" stroke="rgb(var(--c-blue) / 0.3)" stroke-width="1.2" d="M-20,150 C80,110 170,180 250,140 S390,110 440,150" />
-                    <path class="contour-draw" style="animation-delay: 0.9s" stroke="rgb(var(--c-rust) / 0.25)" stroke-width="1.2" d="M-20,100 C90,60 180,130 260,90 S400,60 440,100" />
-                  </svg>
-
-                  <!-- parcels -->
-                  <div class="absolute left-[6%] top-[10%] h-[34%] w-[30%] rounded-md border-2 border-green/60 bg-green/15">
-                    <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-green-deep">NOP.71.020</span>
-                    <span class="absolute bottom-1.5 left-1.5 font-mono text-[8px] text-green-deep">Rp 245 jt</span>
-                    <!-- selection pin -->
-                    <span class="absolute right-2 top-2 grid h-5 w-5 place-items-center">
-                      <span class="pulse-pin absolute h-5 w-5 rounded-full bg-green/40"></span>
-                      <span class="relative h-2.5 w-2.5 rounded-full bg-green ring-2 ring-card"></span>
-                    </span>
-                  </div>
-                  <div class="absolute left-[42%] top-[16%] h-[40%] w-[26%] rounded-md border border-blue/50 bg-blue/10">
-                    <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-blue">ZNT · A-12</span>
-                  </div>
-                  <div class="absolute right-[8%] top-[8%] h-[28%] w-[24%] rounded-md border border-rust/50 bg-rust/10">
-                    <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-rust">BIDANG BARU</span>
-                    <span class="absolute bottom-1.5 right-1.5 font-mono text-[8px] text-rust">+ NJOP</span>
-                  </div>
-                  <div class="absolute bottom-[12%] left-[10%] h-[24%] w-[22%] rounded-md border border-line-strong bg-paper">
-                    <span class="absolute left-1.5 top-1.5 font-mono text-[8px] text-muted">NOP.71.044</span>
-                  </div>
-                  <div class="absolute bottom-[8%] right-[10%] h-[28%] w-[28%] rounded-md border border-green-deep/40 bg-green/5">
-                    <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-green">LUNAS ✓</span>
-                  </div>
-
-                  <!-- scan sweep -->
-                  <div class="sweep absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-green to-transparent shadow-[0_0_12px_rgb(var(--c-green)/0.8)]"></div>
-
-                  <!-- north arrow -->
-                  <div class="absolute right-3 top-3 flex flex-col items-center text-rust">
-                    <svg class="h-6 w-6"><use href="#i-north" /></svg>
-                    <span class="font-mono text-[8px] font-700">N</span>
-                  </div>
-
-                  <!-- scale bar -->
-                  <div class="absolute bottom-3 left-3 flex items-center gap-2 rounded-md border border-line-strong/70 bg-card/90 px-2 py-1 backdrop-blur-sm">
-                    <span class="flex">
-                      <span class="h-1.5 w-5 bg-ink"></span>
-                      <span class="h-1.5 w-5 bg-transparent"></span>
-                      <span class="h-1.5 w-5 bg-ink"></span>
-                    </span>
-                    <span class="font-mono text-[8px] text-muted">0 — 500 m</span>
-                  </div>
-
-                  <!-- floating NJOP tag -->
-                  <div class="float-slow absolute -right-3 top-[42%] rounded-xl border border-green/40 bg-card px-3 py-2 shadow-plot sm:-right-5">
-                    <div class="flex items-center gap-1.5">
-                      <svg class="h-3.5 w-3.5 text-green"><use href="#i-trending" /></svg>
-                      <span class="font-mono text-[9px] font-700 text-green">NJOP ↑ +12%</span>
-                    </div>
-                    <div class="mt-0.5 font-mono text-[8px] text-muted">pemutakhiran ZNT</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- floating stat chips -->
-            <div class="reveal absolute -left-4 bottom-6 hidden rounded-xl border border-line-strong/70 bg-card/90 px-4 py-3 shadow-plot backdrop-blur-sm sm:block" style="animation-delay: 0.5s">
-              <div class="font-mono text-[9px] uppercase tracking-widest text-muted">Realisasi</div>
-              <div class="font-display text-xl font-700 text-ink">Rp 124,6 M</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===== STATS STRIP ===== -->
-        <div class="relative mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-2 divide-x divide-y divide-line/70 overflow-hidden rounded-2xl border border-line-strong/60 bg-card sm:grid-cols-4 sm:divide-y-0">
-            <div class="p-6">
-              <div class="font-display text-3xl font-700 text-green">+18,4%</div>
-              <div class="mt-1 text-xs font-500 text-muted">rata-rata kenaikan realisasi PAD (YoY)</div>
-            </div>
-            <div class="p-6">
-              <div class="font-display text-3xl font-700 text-ink">342K<span class="text-green">+</span></div>
-              <div class="mt-1 text-xs font-500 text-muted">Nomor Objek Pajak aktif dikelola</div>
-            </div>
-            <div class="p-6">
-              <div class="font-display text-3xl font-700 text-ink">H+0</div>
-              <div class="mt-1 text-xs font-500 text-muted">rekonsiliasi pembayaran bank real-time</div>
-            </div>
-            <div class="p-6">
-              <div class="font-display text-3xl font-700 text-ink">1<span class="text-green"> klik</span></div>
-              <div class="mt-1 text-xs font-500 text-muted">cetak e-SPPT massal terjadwal</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           VALUE PROPOSITION
-           ============================================================ -->
-      <section id="piutang" class="relative overflow-hidden border-b border-line/70 py-24">
-        <div class="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-green/8 to-transparent"></div>
-        <div class="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <!-- copy -->
-          <div class="reveal-on-scroll">
-            <div class="inline-flex items-center gap-2 font-mono text-xs font-600 uppercase tracking-[0.2em] text-rust">
-              <svg class="h-4 w-4"><use href="#i-gear" /></svg>
-              SEC.02 · Validasi Data SISMIOP
-            </div>
-            <h2 class="mt-5 font-display text-3xl font-700 leading-tight text-balance sm:text-[2.6rem]">
-              Dari data yang berserakan, menjadi
-              <span class="text-green"><em class="font-500 italic">strategi PAD</em></span> yang terukur.
-            </h2>
-            <p class="mt-6 text-lg leading-relaxed text-ink-soft">
-              Tantangan terbesar pengelolaan PBB-P2 bukan memungut pajak — melainkan
-              <strong class="font-700 text-ink">validitas NJOP</strong> dan
-              <strong class="font-700 text-ink">tumpukan piutang bertahun-tahun</strong>.
-            </p>
-            <p class="mt-4 text-lg leading-relaxed text-ink-soft">
-              SIM-PBB SMART! memfasilitasi Bapenda melakukan rekonsiliasi data, pemutakhiran
-              Zona Nilai Tanah (ZNT), hingga memetakan piutang tak tertagih secara visual dan terstruktur.
-            </p>
-
-            <ul class="mt-8 space-y-3">
-              <li class="flex items-center gap-3 rounded-xl border border-line/70 bg-card/60 p-3.5">
-                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-green/15"><svg class="h-5 w-5 text-green"><use href="#i-check" /></svg></span>
-                <span class="text-sm font-600 text-ink">Identifikasi &amp; pemetaan objek pajak baru (ekstensifikasi)</span>
-              </li>
-              <li class="flex items-center gap-3 rounded-xl border border-line/70 bg-card/60 p-3.5">
-                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-green/15"><svg class="h-5 w-5 text-green"><use href="#i-check" /></svg></span>
-                <span class="text-sm font-600 text-ink">Klasifikasi piutang &amp; surat teguran terjadwal otomatis</span>
-              </li>
-              <li class="flex items-center gap-3 rounded-xl border border-line/70 bg-card/60 p-3.5">
-                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-green/15"><svg class="h-5 w-5 text-green"><use href="#i-check" /></svg></span>
-                <span class="text-sm font-600 text-ink">Pemutakhiran massal NOP via peta spasial terintegrasi</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- analytics panel -->
-          <div class="reveal-on-scroll relative" style="transition-delay: 0.12s">
-            <div class="pointer-events-none absolute -inset-5 rounded-full bg-blue/10 blur-[70px]"></div>
-            <div class="relative rounded-[1.4rem] border-2 border-line-strong/70 bg-card p-5 shadow-plot">
-              <!-- header -->
-              <div class="flex items-end justify-between border-b border-line/70 pb-4">
-                <div>
-                  <div class="font-mono text-[10px] uppercase tracking-widest text-muted">Realisasi PBB-P2 · Kabupaten</div>
-                  <div class="mt-1 font-display text-2xl font-700 text-ink">Rp 124.580.000.000</div>
-                </div>
-                <span class="flex items-center gap-1 rounded-full bg-green/15 px-2.5 py-1 text-xs font-700 text-green"><svg class="h-3 w-3"><use href="#i-trending" /></svg>+18,4% YoY</span>
-              </div>
-
-              <!-- data blocks -->
-              <div class="mt-4 grid grid-cols-2 gap-3">
-                <div class="rounded-xl border border-line/70 bg-paper-2/60 p-4">
-                  <div class="font-mono text-[9px] uppercase tracking-widest text-muted">SPPT Tercetak</div>
-                  <div class="mt-1 font-display text-xl font-700 text-ink">342.105 <span class="font-mono text-[10px] font-400 text-muted">NOP</span></div>
-                  <div class="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-line">
-                    <div class="h-full w-full bg-blue"></div>
-                  </div>
-                </div>
-                <div class="rounded-xl border border-line/70 bg-paper-2/60 p-4">
-                  <div class="font-mono text-[9px] uppercase tracking-widest text-muted">Penyelesaian Piutang</div>
-                  <div class="mt-1 font-display text-xl font-700 text-ink">Rp 12,4 M</div>
-                  <div class="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-line">
-                    <div class="h-full w-[45%] bg-green"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- mini znt map -->
-              <div class="relative mt-3 h-36 overflow-hidden rounded-xl border border-line/70">
-                <div class="absolute inset-0 field-grid-fine bg-paper-2"></div>
-                <svg viewBox="0 0 400 150" preserveAspectRatio="none" class="absolute inset-0 h-full w-full" fill="none">
-                  <path class="contour-draw" style="animation-delay: 0.4s" stroke="rgb(var(--c-green) / 0.4)" stroke-width="1.2" d="M0,110 C80,80 160,120 240,90 S380,70 400,100" />
-                  <path class="contour-draw" style="animation-delay: 0.6s" stroke="rgb(var(--c-blue) / 0.35)" stroke-width="1.2" d="M0,60 C90,30 170,70 250,40 S390,20 400,55" />
-                </svg>
-                <div class="absolute left-4 top-4 h-12 w-20 rotate-6 rounded border border-green/50 bg-green/15"></div>
-                <div class="absolute left-28 top-8 h-16 w-28 -rotate-6 rounded border border-blue/50 bg-blue/10"></div>
-                <div class="absolute right-8 top-6 h-20 w-16 rotate-3 rounded border border-rust/50 bg-rust/10"></div>
-                <div class="absolute bottom-3 left-3 flex items-center gap-2 rounded-md border border-line-strong/70 bg-card/90 px-2.5 py-1.5 backdrop-blur-sm">
-                  <svg class="h-3.5 w-3.5 text-green"><use href="#i-map" /></svg>
-                  <span class="font-mono text-[9px] font-600 text-ink-soft">Pemetaan ZNT Aktif</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           FEATURES
-           ============================================================ -->
-      <section id="fitur" class="relative overflow-hidden py-24">
-        <div class="pointer-events-none absolute inset-0 field-grid opacity-40"></div>
-        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="reveal-on-scroll mx-auto max-w-2xl text-center">
-            <div class="inline-flex items-center gap-2 font-mono text-xs font-600 uppercase tracking-[0.2em] text-rust">
-              <svg class="h-4 w-4"><use href="#i-layers" /></svg>
-              SEC.03 · Modul Inti
-            </div>
-            <h2 class="mt-5 font-display text-3xl font-700 text-balance sm:text-[2.6rem]">Tata kelola PBB-P2 yang menyatukan seluruh siklus</h2>
-            <p class="mt-4 text-lg leading-relaxed text-ink-soft">Sistem end-to-end yang mengawal administrasi PBB: dari pendataan, penetapan, pencetakan, hingga penagihan dan pelaporan.</p>
-          </div>
-
-          <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            <!-- card -->
-            <article class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot" style="transition-delay: 0.04s">
-              <div class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-green/5 blur-2xl transition-opacity group-hover:bg-green/15"></div>
-              <div class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-green transition-transform group-hover:scale-110"><svg class="h-6 w-6"><use href="#i-dashboard" /></svg></div>
-              <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Dashboard Eksekutif &amp; Analitik</h3>
-              <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Pantau tren penerimaan harian, bandingkan target vs realisasi per kecamatan/desa, dan putuskan berbasis data dengan cepat.</p>
-            </article>
-
-            <article class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot" style="transition-delay: 0.1s">
-              <div class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-blue/5 blur-2xl transition-opacity group-hover:bg-blue/15"></div>
-              <div class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-blue transition-transform group-hover:scale-110"><svg class="h-6 w-6"><use href="#i-file" /></svg></div>
-              <h3 class="relative mt-5 font-display text-lg font-700 text-ink">e-SPPT &amp; Portal Wajib Pajak</h3>
-              <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Tinggalkan cetak fisik yang mahal. Wajib Pajak mengunduh e-SPPT mandiri melalui portal publik dengan keamanan QR Code.</p>
-            </article>
-
-            <article class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot" style="transition-delay: 0.16s">
-              <div class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-green/5 blur-2xl transition-opacity group-hover:bg-green/15"></div>
-              <div class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-green transition-transform group-hover:scale-110"><svg class="h-6 w-6"><use href="#i-map" /></svg></div>
-              <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Integrasi Peta Spasial (GIS)</h3>
-              <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Hubungkan NOP dengan peta bidang tanah. Identifikasi pergeseran batas, objek belum terdaftar, dan anomali NJOP secara visual.</p>
-            </article>
-
-            <article class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot" style="transition-delay: 0.04s">
-              <div class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-blue/5 blur-2xl transition-opacity group-hover:bg-blue/15"></div>
-              <div class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-blue transition-transform group-hover:scale-110"><svg class="h-6 w-6"><use href="#i-building" /></svg></div>
-              <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Manajemen Zona Nilai Tanah</h3>
-              <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Simulasikan perubahan tarif &amp; ZNT sebelum ditetapkan. Analisis dampak penyesuaian NJOP terhadap potensi PAD secara instan.</p>
-            </article>
-
-            <article class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot" style="transition-delay: 0.1s">
-              <div class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-rust/5 blur-2xl transition-opacity group-hover:bg-rust/15"></div>
-              <div class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-rust transition-transform group-hover:scale-110"><svg class="h-6 w-6"><use href="#i-shield" /></svg></div>
-              <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Otomatisasi Penagihan Piutang</h3>
-              <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Filter NOP dengan tunggakan beruntun. Hasilkan daftar sasaran penagihan &amp; surat teguran massal otomatis dalam satu klik.</p>
-            </article>
-
-            <article class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot" style="transition-delay: 0.16s">
-              <div class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-blue/5 blur-2xl transition-opacity group-hover:bg-blue/15"></div>
-              <div class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-blue transition-transform group-hover:scale-110"><svg class="h-6 w-6"><use href="#i-card" /></svg></div>
-              <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Rekonsiliasi Bank Real-Time</h3>
-              <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Terhubung langsung dengan BPD dan kanal pembayaran lainnya. Status lunas tercatat saat itu juga — tanpa jeda H+1.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           ECOSYSTEM
-           ============================================================ -->
-      <section id="ekosistem" class="relative overflow-hidden border-y border-line/70 bg-paper-2 py-24">
-        <div class="pointer-events-none absolute inset-0 paper-grain opacity-50"></div>
-        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="reveal-on-scroll mx-auto max-w-2xl text-center">
-            <div class="inline-flex items-center gap-2 font-mono text-xs font-600 uppercase tracking-[0.2em] text-rust">
-              <svg class="h-4 w-4"><use href="#i-globe" /></svg>
-              SEC.04 · Ekosistem Terhubung
-            </div>
-            <h2 class="mt-5 font-display text-3xl font-700 text-balance sm:text-[2.6rem]">PBB yang saling terhubung lintas instansi</h2>
-            <p class="mt-4 text-lg leading-relaxed text-ink-soft">SIM-PBB SMART! tidak berdiri sendiri. API terbuka yang dijamin aman menghubungkan Bapenda dengan seluruh pemangku kepentingan.</p>
-          </div>
-
-          <div class="mt-16 flex flex-col items-center justify-center gap-8 md:flex-row md:gap-12">
-            <!-- left nodes -->
-            <div class="flex w-full flex-col gap-5 md:w-60">
-              <div class="reveal-on-scroll group rounded-2xl border border-line/70 bg-card p-5 text-center transition-colors hover:border-blue/50">
-                <div class="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-blue/10 text-blue"><svg class="h-7 w-7"><use href="#i-building" /></svg></div>
-                <h4 class="mt-3 font-display text-base font-700 text-ink">Kementerian ATR/BPN</h4>
-                <p class="mt-1.5 text-xs leading-relaxed text-muted">Sinkronisasi data persil tanah &amp; zona nilai.</p>
-              </div>
-              <div class="reveal-on-scroll group rounded-2xl border border-line/70 bg-card p-5 text-center transition-colors hover:border-rust/50" style="transition-delay: 0.1s">
-                <div class="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-rust/10 text-rust"><svg class="h-7 w-7"><use href="#i-file" /></svg></div>
-                <h4 class="mt-3 font-display text-base font-700 text-ink">Notaris &amp; PPAT</h4>
-                <p class="mt-1.5 text-xs leading-relaxed text-muted">Validasi status lunas PBB untuk e-BPHTB.</p>
-              </div>
-            </div>
-
-            <!-- core -->
-            <div class="reveal-on-scroll relative grid place-items-center">
-              <div class="pointer-events-none absolute h-56 w-56 rounded-full bg-green/20 blur-[55px]"></div>
-              <div class="spin-slow absolute h-52 w-52 rounded-full border border-dashed border-green/30"></div>
-              <div class="relative grid h-44 w-44 place-items-center rounded-full border-2 border-green/50 bg-card text-center shadow-glow">
-                <svg class="h-10 w-10 text-green"><use href="#i-compass" /></svg>
-                <div class="mt-1 font-display text-sm font-700 leading-tight text-ink">Core System<br /><span class="text-green">SIM-PBB SMART!</span></div>
-              </div>
-            </div>
-
-            <!-- right nodes -->
-            <div class="flex w-full flex-col gap-5 md:w-60">
-              <div class="reveal-on-scroll group rounded-2xl border border-line/70 bg-card p-5 text-center transition-colors hover:border-blue/50">
-                <div class="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-blue/10 text-blue"><svg class="h-7 w-7"><use href="#i-card" /></svg></div>
-                <h4 class="mt-3 font-display text-base font-700 text-ink">Kanal Pembayaran</h4>
-                <p class="mt-1.5 text-xs leading-relaxed text-muted">BPD, QRIS, e-Commerce, retail &amp; Bank Himbara.</p>
-              </div>
-              <div class="reveal-on-scroll group rounded-2xl border border-line/70 bg-card p-5 text-center transition-colors hover:border-green/50" style="transition-delay: 0.1s">
-                <div class="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-green/10 text-green"><svg class="h-7 w-7"><use href="#i-globe" /></svg></div>
-                <h4 class="mt-3 font-display text-base font-700 text-ink">Portal Wajib Pajak</h4>
-                <p class="mt-1.5 text-xs leading-relaxed text-muted">Cek tagihan, unduh e-SPPT, &amp; bayar online.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           CTA
-           ============================================================ -->
-      <section id="kontak" class="relative overflow-hidden py-24">
-        <div class="pointer-events-none absolute inset-0 bg-green/8"></div>
-        <div class="pointer-events-none absolute inset-0 field-grid opacity-40"></div>
-        <div class="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green/15 blur-[120px]"></div>
-        <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green to-transparent"></div>
-
-        <div class="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <div class="reveal-on-scroll inline-flex items-center gap-2 rounded-full border border-green/30 bg-green/10 px-4 py-1.5 text-xs font-600 uppercase tracking-[0.15em] text-green">
-            <svg class="h-3.5 w-3.5"><use href="#i-spark" /></svg>
-            Mulai Transformasi
-          </div>
-          <h2 class="reveal-on-scroll mt-6 font-display text-3xl font-700 leading-tight text-balance sm:text-5xl" style="transition-delay: 0.08s">
-            Siap melampaui target PBB-P2 <span class="text-green"><em class="font-500 italic">tahun ini?</em></span>
-          </h2>
-          <p class="reveal-on-scroll mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft" style="transition-delay: 0.16s">
-            Tingkatkan sistem informasi PBB Anda ke level berikutnya tanpa disrupsi operasional — pengalaman
-            layanan digital terbaik bagi warga, sekaligus penerimaan daerah yang teramankan.
+          <p class="reveal mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft lg:mx-0"
+            style="animation-delay: 0.16s">
+            Setiap bidang <strong class="font-700 text-ink">terpetakan</strong>, setiap NJOP
+            <strong class="font-700 text-ink">akurat</strong>, setiap rupiah piutang
+            <strong class="font-700 text-ink">tertagih</strong>. SmartPBB menyatukan data atribut
+            dan spasial Bapenda dalam satu platform cerdas.
           </p>
-          <div class="reveal-on-scroll mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row" style="transition-delay: 0.24s">
-            <a href="mailto:halo@sim-pbb.id?subject=Konsultasi%20SIM-PBB%20SMART!" class="group inline-flex items-center justify-center gap-2 rounded-full bg-green px-8 py-4 text-base font-700 text-white shadow-glow transition-all hover:bg-green-deep">
-              <span>Jadwalkan Konsultasi Teknis</span>
-              <svg class="h-5 w-5 transition-transform group-hover:translate-x-1"><use href="#i-arrow" /></svg>
-            </a>
-            <a href="#fitur" class="inline-flex items-center justify-center gap-2 rounded-full border border-line-strong/70 bg-card/60 px-8 py-4 text-base font-700 text-ink backdrop-blur-sm transition-all hover:border-green/50 hover:text-green">Lihat Modul Lengkap</a>
-          </div>
-        </div>
-      </section>
-    </main>
 
-    <!-- ===================== FOOTER ===================== -->
-    <footer class="border-t border-line/70 bg-paper-2 py-12">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div class="flex items-center gap-2.5">
-            <span class="grid h-9 w-9 place-items-center rounded-lg border border-line-strong/70 bg-card"><svg class="h-5 w-5 text-muted"><use href="#i-compass" /></svg></span>
-            <span class="font-display text-xl font-700 text-ink">SIM-PBB<span class="text-green"> SMART!</span></span>
+          <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start"
+            style="animation-delay: 0.24s">
+            <a href="#kontak"
+              class="group inline-flex items-center justify-center gap-2 rounded-full bg-green px-7 py-3.5 text-base font-700 text-white shadow-glow transition-all hover:bg-green-deep">
+              <svg class="h-5 w-5">
+                <use href="#i-trending" />
+              </svg>
+              Tingkatkan Realisasi PAD
+            </a>
+            <a href="#fitur"
+              class="inline-flex items-center justify-center gap-2 rounded-full border border-line-strong/70 bg-card/60 px-7 py-3.5 text-base font-700 text-ink backdrop-blur-sm transition-all hover:border-green/50 hover:text-green">
+              <svg class="h-5 w-5 text-green">
+                <use href="#i-map" />
+              </svg>
+              Jelajahi Modul Spasial
+            </a>
           </div>
-          <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-500 text-muted">
-            <a href="#piutang" class="transition-colors hover:text-ink">Pemutakhiran</a>
-            <a href="#fitur" class="transition-colors hover:text-ink">Modul Inti</a>
-            <a href="#ekosistem" class="transition-colors hover:text-ink">Ekosistem</a>
-            <a href="#kontak" class="transition-colors hover:text-ink">Kontak</a>
-          </nav>
+
+          <!-- trust -->
+          <div class="reveal mt-12 border-t border-line/70 pt-7" style="animation-delay: 0.32s">
+            <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">Dipercaya mengelola jutaan NOP di
+              sejumlah Pemda</p>
+            <div class="mt-4 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
+                Kota Denpasar
+              </span>
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
+                Kab. Tabanan
+              </span>
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
+                Kab. Karangasem
+              </span>
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
+                Kab. Bintan
+              </span>
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
+                Kab. Karimun
+              </span>
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
+                Kab. Lingga
+              </span>
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
+                Kab. Lamandau
+              </span>
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-line-strong/60 bg-card/70 px-4 py-2 text-sm font-700 text-ink-soft backdrop-blur-sm">
+                Kab. Gunung Mas
+              </span>
+            </div>
+          </div>
         </div>
-        <div class="mt-8 flex flex-col items-center justify-between gap-3 border-t border-line/70 pt-6 text-center md:flex-row md:text-left">
-          <p class="text-xs text-muted">&copy; <span id="year">2026</span> SIM-PBB SMART! · Tata kelola Pajak Daerah &amp; PBB-P2.</p>
-          <p class="font-mono text-[10px] uppercase tracking-widest text-muted/70">Dirancang untuk Bapenda modern · SISMIOP-ready</p>
+
+        <!-- HERO CADASTRAL MAP -->
+        <div class="reveal-scale relative" style="animation-delay: 0.2s">
+          <div class="pointer-events-none absolute -inset-6 rounded-[2rem] bg-green/15 blur-[70px]"></div>
+
+          <div class="relative rounded-[1.4rem] border-2 border-line-strong/70 bg-card p-2.5 shadow-plot">
+            <!-- panel header -->
+            <div class="flex items-center justify-between px-2 pb-2 pt-1">
+              <div class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                <svg class="h-3.5 w-3.5 text-green">
+                  <use href="#i-map" />
+                </svg>
+                Peta Bidang · Zona Nilai Tanah
+              </div>
+              <span
+                class="beam flex items-center gap-1 rounded-full bg-green/15 px-2 py-0.5 text-[10px] font-600 text-green"><span
+                  class="h-1.5 w-1.5 rounded-full bg-green"></span>LIVE</span>
+            </div>
+
+            <!-- framed map -->
+            <div class="relative overflow-hidden rounded-xl border border-line-strong/60 bg-paper-2">
+              <!-- tick rules top -->
+              <div class="flex h-4 items-end justify-between border-b border-line/70 bg-paper px-2">
+                <span class="font-mono text-[8px] text-muted">0</span><span class="h-2 w-px bg-line-strong"></span><span
+                  class="font-mono text-[8px] text-muted">100</span><span class="h-2 w-px bg-line-strong"></span><span
+                  class="font-mono text-[8px] text-muted">200</span><span class="h-2 w-px bg-line-strong"></span><span
+                  class="font-mono text-[8px] text-muted">300</span><span class="h-2 w-px bg-line-strong"></span><span
+                  class="font-mono text-[8px] text-muted">400m</span>
+              </div>
+
+              <div class="relative h-[360px] sm:h-[420px]">
+                <div class="absolute inset-0 field-grid-fine"></div>
+                <div class="absolute inset-0 paper-grain opacity-60"></div>
+
+                <!-- contour curves -->
+                <svg viewBox="0 0 400 420" preserveAspectRatio="none" class="absolute inset-0 h-full w-full"
+                  fill="none">
+                  <path class="contour-draw" style="animation-delay: 0.3s" stroke="rgb(var(--c-green) / 0.35)"
+                    stroke-width="1.2" d="M-20,300 C60,260 140,320 220,280 S380,250 440,300" />
+                  <path class="contour-draw" style="animation-delay: 0.5s" stroke="rgb(var(--c-green) / 0.25)"
+                    stroke-width="1.2" d="M-20,250 C70,210 160,270 240,230 S390,200 440,250" />
+                  <path class="contour-draw" style="animation-delay: 0.7s" stroke="rgb(var(--c-blue) / 0.3)"
+                    stroke-width="1.2" d="M-20,150 C80,110 170,180 250,140 S390,110 440,150" />
+                  <path class="contour-draw" style="animation-delay: 0.9s" stroke="rgb(var(--c-rust) / 0.25)"
+                    stroke-width="1.2" d="M-20,100 C90,60 180,130 260,90 S400,60 440,100" />
+                </svg>
+
+                <!-- parcels -->
+                <div
+                  class="absolute left-[6%] top-[10%] h-[34%] w-[30%] rounded-md border-2 border-green/60 bg-green/15">
+                  <span
+                    class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-green-deep">NOP.71.020</span>
+                  <span class="absolute bottom-1.5 left-1.5 font-mono text-[8px] text-green-deep">Rp 245 jt</span>
+                  <!-- selection pin -->
+                  <span class="absolute right-2 top-2 grid h-5 w-5 place-items-center">
+                    <span class="pulse-pin absolute h-5 w-5 rounded-full bg-green/40"></span>
+                    <span class="relative h-2.5 w-2.5 rounded-full bg-green ring-2 ring-card"></span>
+                  </span>
+                </div>
+                <div class="absolute left-[42%] top-[16%] h-[40%] w-[26%] rounded-md border border-blue/50 bg-blue/10">
+                  <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-blue">ZNT · A-12</span>
+                </div>
+                <div class="absolute right-[8%] top-[8%] h-[28%] w-[24%] rounded-md border border-rust/50 bg-rust/10">
+                  <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-rust">BIDANG BARU</span>
+                  <span class="absolute bottom-1.5 right-1.5 font-mono text-[8px] text-rust">+ NJOP</span>
+                </div>
+                <div
+                  class="absolute bottom-[12%] left-[10%] h-[24%] w-[22%] rounded-md border border-line-strong bg-paper">
+                  <span class="absolute left-1.5 top-1.5 font-mono text-[8px] text-muted">NOP.71.044</span>
+                </div>
+                <div
+                  class="absolute bottom-[8%] right-[10%] h-[28%] w-[28%] rounded-md border border-green-deep/40 bg-green/5">
+                  <span class="absolute left-1.5 top-1.5 font-mono text-[8px] font-600 text-green">LUNAS ✓</span>
+                </div>
+
+                <!-- scan sweep -->
+                <div
+                  class="sweep absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-green to-transparent shadow-[0_0_12px_rgb(var(--c-green)/0.8)]">
+                </div>
+
+                <!-- north arrow -->
+                <div class="absolute right-3 top-3 flex flex-col items-center text-rust">
+                  <svg class="h-6 w-6">
+                    <use href="#i-north" />
+                  </svg>
+                  <span class="font-mono text-[8px] font-700">N</span>
+                </div>
+
+                <!-- scale bar -->
+                <div
+                  class="absolute bottom-3 left-3 flex items-center gap-2 rounded-md border border-line-strong/70 bg-card/90 px-2 py-1 backdrop-blur-sm">
+                  <span class="flex">
+                    <span class="h-1.5 w-5 bg-ink"></span>
+                    <span class="h-1.5 w-5 bg-transparent"></span>
+                    <span class="h-1.5 w-5 bg-ink"></span>
+                  </span>
+                  <span class="font-mono text-[8px] text-muted">0 — 500 m</span>
+                </div>
+
+                <!-- floating NJOP tag -->
+                <div
+                  class="float-slow absolute -right-3 top-[42%] rounded-xl border border-green/40 bg-card px-3 py-2 shadow-plot sm:-right-5">
+                  <div class="flex items-center gap-1.5">
+                    <svg class="h-3.5 w-3.5 text-green">
+                      <use href="#i-trending" />
+                    </svg>
+                    <span class="font-mono text-[9px] font-700 text-green">NJOP ↑ +12%</span>
+                  </div>
+                  <div class="mt-0.5 font-mono text-[8px] text-muted">pemutakhiran ZNT</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- floating stat chips -->
+          <div
+            class="reveal absolute -left-4 bottom-6 hidden rounded-xl border border-line-strong/70 bg-card/90 px-4 py-3 shadow-plot backdrop-blur-sm sm:block"
+            style="animation-delay: 0.5s">
+            <div class="font-mono text-[9px] uppercase tracking-widest text-muted">Realisasi</div>
+            <div class="font-display text-xl font-700 text-ink">Rp 124,6 M</div>
+          </div>
         </div>
       </div>
-    </footer>
 
-    <!-- ===================== MINIMAL INTERACTION SCRIPT ===================== -->
-    <script>
-      (function () {
-        // live year
-        var y = document.getElementById('year');
-        if (y) y.textContent = new Date().getFullYear();
+      <!-- ===== STATS STRIP ===== -->
+      <div class="relative mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-2 divide-x divide-y divide-line/70 overflow-hidden rounded-2xl border border-line-strong/60 bg-card sm:grid-cols-4 sm:divide-y-0">
+          <div class="p-6">
+            <div class="font-display text-3xl font-700 text-green">+18,4%</div>
+            <div class="mt-1 text-xs font-500 text-muted">rata-rata kenaikan realisasi PAD (YoY)</div>
+          </div>
+          <div class="p-6">
+            <div class="font-display text-3xl font-700 text-ink">342K<span class="text-green">+</span></div>
+            <div class="mt-1 text-xs font-500 text-muted">Nomor Objek Pajak aktif dikelola</div>
+          </div>
+          <div class="p-6">
+            <div class="font-display text-3xl font-700 text-ink">H+0</div>
+            <div class="mt-1 text-xs font-500 text-muted">rekonsiliasi pembayaran bank real-time</div>
+          </div>
+          <div class="p-6">
+            <div class="font-display text-3xl font-700 text-ink">1<span class="text-green"> klik</span></div>
+            <div class="mt-1 text-xs font-500 text-muted">cetak e-SPPT massal terjadwal</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // navbar scrolled state
-        var nav = document.getElementById('nav');
-        var onScroll = function () {
-          if (window.scrollY > 16) {
-            nav.classList.add('bg-paper/85', 'backdrop-blur-md', 'border-b', 'border-line/60', 'shadow-sm');
-          } else {
-            nav.classList.remove('bg-paper/85', 'backdrop-blur-md', 'border-b', 'border-line/60', 'shadow-sm');
-          }
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
+    <!-- ============================================================
+           VALUE PROPOSITION
+           ============================================================ -->
+    <section id="piutang" class="relative overflow-hidden border-b border-line/70 py-24">
+      <div class="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-green/8 to-transparent">
+      </div>
+      <div class="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <!-- copy -->
+        <div class="reveal-on-scroll">
+          <div class="inline-flex items-center gap-2 font-mono text-xs font-600 uppercase tracking-[0.2em] text-rust">
+            <svg class="h-4 w-4">
+              <use href="#i-gear" />
+            </svg>
+            Validasi Data SISMIOP
+          </div>
+          <h2 class="mt-5 font-display text-3xl font-700 leading-tight text-balance sm:text-[2.6rem]">
+            Dari data yang berserakan, menjadi
+            <span class="text-green"><em class="font-500 italic">strategi PAD</em></span> yang terukur.
+          </h2>
+          <p class="mt-6 text-lg leading-relaxed text-ink-soft">
+            Tantangan terbesar pengelolaan PBB-P2 bukan memungut pajak — melainkan
+            <strong class="font-700 text-ink">validitas NJOP</strong> dan
+            <strong class="font-700 text-ink">tumpukan piutang bertahun-tahun</strong>.
+          </p>
+          <p class="mt-4 text-lg leading-relaxed text-ink-soft">
+            SmartPBB memfasilitasi Bapenda melakukan rekonsiliasi data, pemutakhiran
+            Zona Nilai Tanah (ZNT), hingga memetakan piutang tak tertagih secara visual dan terstruktur.
+          </p>
 
-        // mobile menu
-        var btn = document.getElementById('menu-btn');
-        var menu = document.getElementById('mobile-menu');
-        var open = false;
-        var setMenu = function (state) {
-          open = state;
-          menu.classList.toggle('hidden', !open);
-          btn.innerHTML = open
-            ? '<svg class="h-5 w-5 text-ink"><use href="#i-close"/></svg>'
-            : '<svg class="h-5 w-5 text-ink"><use href="#i-menu"/></svg>';
-        };
-        btn.addEventListener('click', function () { setMenu(!open); });
-        menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+          <ul class="mt-8 space-y-3">
+            <li class="flex items-center gap-3 rounded-xl border border-line/70 bg-card/60 p-3.5">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-green/15"><svg
+                  class="h-5 w-5 text-green">
+                  <use href="#i-check" />
+                </svg></span>
+              <span class="text-sm font-600 text-ink">Identifikasi &amp; pemetaan objek pajak baru
+                (ekstensifikasi)</span>
+            </li>
+            <li class="flex items-center gap-3 rounded-xl border border-line/70 bg-card/60 p-3.5">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-green/15"><svg
+                  class="h-5 w-5 text-green">
+                  <use href="#i-check" />
+                </svg></span>
+              <span class="text-sm font-600 text-ink">Klasifikasi piutang &amp; surat teguran terjadwal otomatis</span>
+            </li>
+            <li class="flex items-center gap-3 rounded-xl border border-line/70 bg-card/60 p-3.5">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-green/15"><svg
+                  class="h-5 w-5 text-green">
+                  <use href="#i-check" />
+                </svg></span>
+              <span class="text-sm font-600 text-ink">Pemutakhiran massal NOP via peta spasial terintegrasi</span>
+            </li>
+          </ul>
+        </div>
 
-        // scroll reveal
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-        document.querySelectorAll('.reveal-on-scroll').forEach(function (el) { io.observe(el); });
-      })();
-    </script>
-  </body>
+        <!-- analytics panel -->
+        <div class="reveal-on-scroll relative" style="transition-delay: 0.12s">
+          <div class="pointer-events-none absolute -inset-5 rounded-full bg-blue/10 blur-[70px]"></div>
+          <div class="relative overflow-hidden rounded-[1.4rem] border-2 border-line-strong/70 bg-card p-5 shadow-plot">
+            <!-- cadastral grid texture -->
+            <div class="pointer-events-none absolute inset-0 field-grid-fine opacity-25"></div>
+
+            <div class="relative z-10 space-y-4">
+              <!-- dashboard header -->
+              <div class="flex flex-wrap items-start justify-between gap-4 border-b border-line/70 pb-4">
+                <div>
+                  <h3 class="font-sans text-xl font-800 tracking-tight text-ink">Dashboard</h3>
+                  <p class="text-xs text-ink-soft">Ringkasan data PBB-P2 dan realisasi ketetapan pajak.</p>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-[9px] font-700 uppercase tracking-wider text-muted">TAMPILAN:</span>
+                  <div class="relative">
+                    <select
+                      class="cursor-pointer appearance-none rounded-lg border border-line-strong/60 bg-card px-2.5 py-1 pr-7 text-[11px] font-600 text-ink hover:bg-paper focus:outline-none">
+                      <option>Ringkasan PBB</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-muted">
+                      <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- filter row -->
+              <div class="flex items-center justify-between gap-4 rounded-xl border border-line/60 bg-paper-2/40 p-2.5">
+                <span class="text-xs font-700 text-ink-soft">Filter Tahun Pajak:</span>
+                <div class="relative">
+                  <select
+                    class="cursor-pointer appearance-none rounded-lg border border-line-strong/60 bg-card px-2.5 py-1 pr-7 text-[11px] font-600 text-ink hover:bg-paper focus:outline-none">
+                    <option>Tahun 2026</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-muted">
+                    <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- persentase realisasi -->
+              <div class="rounded-xl border border-line/70 bg-card p-3.5 shadow-sm">
+                <div class="text-[11px] font-700 text-ink-soft">Persentase Realisasi Pembayaran (2026)</div>
+                <div class="mt-1.5 flex flex-wrap items-baseline gap-1.5">
+                  <span class="text-xl font-800 text-ink">75.4%</span>
+                  <span class="text-xs font-600 text-muted">Rp 377.000.000 / Rp 500.000.000</span>
+                </div>
+                <div class="mt-2.5 h-2 w-full overflow-hidden rounded-full bg-line/50">
+                  <div class="h-full rounded-full bg-green transition-all duration-1000" style="width: 75.4%"></div>
+                </div>
+              </div>
+
+              <!-- grid of 7 cards -->
+              <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+                <!-- Card 1: Total Objek Pajak -->
+                <div class="flex flex-col justify-between rounded-xl border border-line/60 bg-card p-3 shadow-sm">
+                  <div>
+                    <div class="flex items-start justify-between gap-1.5">
+                      <span class="text-[10px] font-700 leading-tight text-ink-soft">Total Objek Pajak</span>
+                      <span class="rounded bg-paper p-0.5 text-muted border border-line/40">
+                        <svg class="h-3.5 w-3.5">
+                          <use href="#i-dashboard" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="mt-2 text-lg font-800 text-ink">100</div>
+                  </div>
+                  <div class="mt-1.5 text-[9px] text-muted leading-tight">Jumlah SPOP terdaftar</div>
+                </div>
+
+                <!-- Card 2: SPPT 2026 -->
+                <div class="flex flex-col justify-between rounded-xl border border-line/60 bg-card p-3 shadow-sm">
+                  <div>
+                    <div class="flex items-start justify-between gap-1.5">
+                      <span class="text-[10px] font-700 leading-tight text-ink-soft">SPPT 2026</span>
+                      <span class="rounded bg-paper p-0.5 text-muted border border-line/40">
+                        <svg class="h-3.5 w-3.5">
+                          <use href="#i-file" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="mt-2 text-lg font-800 text-ink">100</div>
+                  </div>
+                  <div class="mt-1.5 text-[9px] text-muted leading-tight">Jumlah SPPT diterbitkan</div>
+                </div>
+
+                <!-- Card 3: Ketetapan -->
+                <div class="flex flex-col justify-between rounded-xl border border-line/60 bg-card p-3 shadow-sm">
+                  <div>
+                    <div class="flex items-start justify-between gap-1.5">
+                      <span class="text-[10px] font-700 leading-tight text-ink-soft">Ketetapan</span>
+                      <span class="rounded bg-paper p-0.5 text-muted border border-line/40">
+                        <svg class="h-3.5 w-3.5">
+                          <use href="#i-trending" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="mt-2 text-xs sm:text-sm lg:text-xs xl:text-sm font-800 text-ink tracking-tight">Rp
+                      500.000.000</div>
+                  </div>
+                  <div class="mt-1.5 text-[9px] text-muted leading-tight">Total PBB harus dibayar</div>
+                </div>
+
+                <!-- Card 4: Realisasi -->
+                <div class="flex flex-col justify-between rounded-xl border border-line/60 bg-card p-3 shadow-sm">
+                  <div>
+                    <div class="flex items-start justify-between gap-1.5">
+                      <span class="text-[10px] font-700 leading-tight text-ink-soft">Realisasi</span>
+                      <span class="rounded bg-paper p-0.5 text-muted border border-line/40">
+                        <svg class="h-3.5 w-3.5">
+                          <use href="#i-card" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="mt-2 text-xs sm:text-sm lg:text-xs xl:text-sm font-800 text-ink tracking-tight">Rp
+                      377.000.000</div>
+                  </div>
+                  <div class="mt-1.5 text-[9px] text-muted leading-tight">Total Pembayaran diterima</div>
+                </div>
+
+                <!-- Card 5: Lunas -->
+                <div class="flex flex-col justify-between rounded-xl border border-line/60 bg-card p-3 shadow-sm">
+                  <div>
+                    <div class="flex items-start justify-between gap-1.5">
+                      <span class="text-[10px] font-700 leading-tight text-ink-soft">Lunas</span>
+                      <span class="rounded-full bg-green/10 p-0.5 text-green border border-green/20">
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5"
+                          viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="mt-2 text-lg font-800 text-ink">75</div>
+                  </div>
+                  <div class="mt-1.5 text-[9px] text-muted leading-tight">SPPT telah lunas</div>
+                </div>
+
+                <!-- Card 6: Belum Bayar -->
+                <div class="flex flex-col justify-between rounded-xl border border-line/60 bg-card p-3 shadow-sm">
+                  <div>
+                    <div class="flex items-start justify-between gap-1.5">
+                      <span class="text-[10px] font-700 leading-tight text-ink-soft">Belum Bayar</span>
+                      <span class="rounded-full bg-rust/10 p-0.5 text-rust border border-rust/20">
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="mt-2 text-lg font-800 text-ink">25</div>
+                  </div>
+                  <div class="mt-1.5 text-[9px] text-muted leading-tight">SPPT belum lunas</div>
+                </div>
+
+                <!-- Card 7: Pelayanan Aktif -->
+                <div
+                  class="flex flex-col justify-between rounded-xl border border-line/60 bg-card p-3 shadow-sm col-span-2 sm:col-span-1 lg:col-span-2 xl:col-span-1">
+                  <div>
+                    <div class="flex items-start justify-between gap-1.5">
+                      <span class="text-[10px] font-700 leading-tight text-ink-soft">Pelayanan Aktif</span>
+                      <span class="rounded bg-paper p-0.5 text-muted border border-line/40">
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="mt-2 text-lg font-800 text-ink">3</div>
+                  </div>
+                  <div class="mt-1.5 text-[9px] text-muted leading-tight">Berkas dalam proses</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+           FEATURES
+           ============================================================ -->
+    <section id="fitur" class="relative overflow-hidden py-24">
+      <div class="pointer-events-none absolute inset-0 field-grid opacity-40"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal-on-scroll mx-auto max-w-2xl text-center">
+          <div class="inline-flex items-center gap-2 font-mono text-xs font-600 uppercase tracking-[0.2em] text-rust">
+            <svg class="h-4 w-4">
+              <use href="#i-layers" />
+            </svg>
+            SEC.03 · Modul Inti
+          </div>
+          <h2 class="mt-5 font-display text-3xl font-700 text-balance sm:text-[2.6rem]">Tata kelola PBB-P2 yang
+            menyatukan seluruh siklus</h2>
+          <p class="mt-4 text-lg leading-relaxed text-ink-soft">Sistem end-to-end yang mengawal administrasi PBB: dari
+            pendataan, penetapan, pencetakan, hingga penagihan dan pelaporan.</p>
+        </div>
+
+        <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <!-- card -->
+          <article
+            class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot"
+            style="transition-delay: 0.04s">
+            <div
+              class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-green/5 blur-2xl transition-opacity group-hover:bg-green/15">
+            </div>
+            <div
+              class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-green transition-transform group-hover:scale-110">
+              <svg class="h-6 w-6">
+                <use href="#i-dashboard" />
+              </svg>
+            </div>
+            <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Dashboard Eksekutif &amp; Analitik</h3>
+            <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Pantau tren penerimaan harian, bandingkan
+              target vs realisasi per kecamatan/desa, dan putuskan berbasis data dengan cepat.</p>
+          </article>
+
+          <article
+            class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot"
+            style="transition-delay: 0.1s">
+            <div
+              class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-blue/5 blur-2xl transition-opacity group-hover:bg-blue/15">
+            </div>
+            <div
+              class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-blue transition-transform group-hover:scale-110">
+              <svg class="h-6 w-6">
+                <use href="#i-file" />
+              </svg>
+            </div>
+            <h3 class="relative mt-5 font-display text-lg font-700 text-ink">e-SPPT &amp; Portal Wajib Pajak</h3>
+            <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Tinggalkan cetak fisik yang mahal. Wajib
+              Pajak mengunduh e-SPPT mandiri melalui portal publik dengan keamanan QR Code.</p>
+          </article>
+
+          <article
+            class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot"
+            style="transition-delay: 0.16s">
+            <div
+              class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-green/5 blur-2xl transition-opacity group-hover:bg-green/15">
+            </div>
+            <div
+              class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-green transition-transform group-hover:scale-110">
+              <svg class="h-6 w-6">
+                <use href="#i-map" />
+              </svg>
+            </div>
+            <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Integrasi Peta Spasial (GIS)</h3>
+            <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Hubungkan NOP dengan peta bidang tanah.
+              Identifikasi pergeseran batas, objek belum terdaftar, dan anomali NJOP secara visual.</p>
+          </article>
+
+          <article
+            class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot"
+            style="transition-delay: 0.04s">
+            <div
+              class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-blue/5 blur-2xl transition-opacity group-hover:bg-blue/15">
+            </div>
+            <div
+              class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-blue transition-transform group-hover:scale-110">
+              <svg class="h-6 w-6">
+                <use href="#i-building" />
+              </svg>
+            </div>
+            <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Manajemen Zona Nilai Tanah</h3>
+            <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Simulasikan perubahan tarif &amp; ZNT sebelum
+              ditetapkan. Analisis dampak penyesuaian NJOP terhadap potensi PAD secara instan.</p>
+          </article>
+
+          <article
+            class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot"
+            style="transition-delay: 0.1s">
+            <div
+              class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-rust/5 blur-2xl transition-opacity group-hover:bg-rust/15">
+            </div>
+            <div
+              class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-rust transition-transform group-hover:scale-110">
+              <svg class="h-6 w-6">
+                <use href="#i-shield" />
+              </svg>
+            </div>
+            <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Otomatisasi Penagihan Piutang</h3>
+            <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Filter NOP dengan tunggakan beruntun.
+              Hasilkan daftar sasaran penagihan &amp; surat teguran massal otomatis dalam satu klik.</p>
+          </article>
+
+          <article
+            class="reveal-on-scroll group relative overflow-hidden rounded-2xl border border-line/70 bg-card p-7 transition-all hover:-translate-y-1 hover:border-green/40 hover:shadow-plot"
+            style="transition-delay: 0.16s">
+            <div
+              class="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-blue/5 blur-2xl transition-opacity group-hover:bg-blue/15">
+            </div>
+            <div
+              class="relative grid h-12 w-12 place-items-center rounded-xl border border-line-strong/60 bg-paper-2 text-blue transition-transform group-hover:scale-110">
+              <svg class="h-6 w-6">
+                <use href="#i-card" />
+              </svg>
+            </div>
+            <h3 class="relative mt-5 font-display text-lg font-700 text-ink">Rekonsiliasi Bank Real-Time</h3>
+            <p class="relative mt-2 text-sm leading-relaxed text-ink-soft">Terhubung langsung dengan BPD dan kanal
+              pembayaran lainnya. Status lunas tercatat saat itu juga — tanpa jeda H+1.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+           ECOSYSTEM
+           ============================================================ -->
+    <section id="ekosistem" class="relative overflow-hidden border-y border-line/70 bg-paper-2 py-24">
+      <div class="pointer-events-none absolute inset-0 paper-grain opacity-50"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal-on-scroll mx-auto max-w-2xl text-center">
+          <div class="inline-flex items-center gap-2 font-mono text-xs font-600 uppercase tracking-[0.2em] text-rust">
+            <svg class="h-4 w-4">
+              <use href="#i-globe" />
+            </svg>
+            SEC.04 · Ekosistem Terhubung
+          </div>
+          <h2 class="mt-5 font-display text-3xl font-700 text-balance sm:text-[2.6rem]">PBB yang saling terhubung lintas
+            instansi</h2>
+          <p class="mt-4 text-lg leading-relaxed text-ink-soft">SmartPBB tidak berdiri sendiri. API terbuka yang dijamin
+            aman menghubungkan Bapenda dengan seluruh pemangku kepentingan.</p>
+        </div>
+
+        <div class="mt-16 flex flex-col items-center justify-center gap-8 md:flex-row md:gap-12">
+          <!-- left nodes -->
+          <div class="flex w-full flex-col gap-5 md:w-60">
+            <div
+              class="reveal-on-scroll group rounded-2xl border border-line/70 bg-card p-5 text-center transition-colors hover:border-blue/50">
+              <div class="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-blue/10 text-blue"><svg
+                  class="h-7 w-7">
+                  <use href="#i-building" />
+                </svg></div>
+              <h4 class="mt-3 font-display text-base font-700 text-ink">Kementerian ATR/BPN</h4>
+              <p class="mt-1.5 text-xs leading-relaxed text-muted">Sinkronisasi data persil tanah &amp; zona nilai.</p>
+            </div>
+            <div
+              class="reveal-on-scroll group rounded-2xl border border-line/70 bg-card p-5 text-center transition-colors hover:border-rust/50"
+              style="transition-delay: 0.1s">
+              <div class="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-rust/10 text-rust"><svg
+                  class="h-7 w-7">
+                  <use href="#i-file" />
+                </svg></div>
+              <h4 class="mt-3 font-display text-base font-700 text-ink">Notaris &amp; PPAT</h4>
+              <p class="mt-1.5 text-xs leading-relaxed text-muted">Validasi status lunas PBB untuk e-BPHTB.</p>
+            </div>
+          </div>
+
+          <!-- core -->
+          <div class="reveal-on-scroll relative grid place-items-center">
+            <div class="pointer-events-none absolute h-56 w-56 rounded-full bg-green/20 blur-[55px]"></div>
+            <div class="spin-slow absolute h-52 w-52 rounded-full border border-dashed border-green/30"></div>
+            <div
+              class="relative grid h-44 w-44 place-items-center rounded-full border-2 border-green/50 bg-card text-center shadow-glow">
+              <div class="mt-1 font-display text-xl font-700 leading-tight text-ink">
+                Smart<span class="text-green">PBB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- right nodes -->
+          <div class="flex w-full flex-col gap-5 md:w-60">
+            <div
+              class="reveal-on-scroll group rounded-2xl border border-line/70 bg-card p-5 text-center transition-colors hover:border-blue/50">
+              <div class="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-blue/10 text-blue"><svg
+                  class="h-7 w-7">
+                  <use href="#i-card" />
+                </svg></div>
+              <h4 class="mt-3 font-display text-base font-700 text-ink">Kanal Pembayaran</h4>
+              <p class="mt-1.5 text-xs leading-relaxed text-muted">BPD, QRIS, e-Commerce, retail &amp; Bank Himbara.</p>
+            </div>
+            <div
+              class="reveal-on-scroll group rounded-2xl border border-line/70 bg-card p-5 text-center transition-colors hover:border-green/50"
+              style="transition-delay: 0.1s">
+              <div class="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-green/10 text-green"><svg
+                  class="h-7 w-7">
+                  <use href="#i-globe" />
+                </svg></div>
+              <h4 class="mt-3 font-display text-base font-700 text-ink">Portal Wajib Pajak</h4>
+              <p class="mt-1.5 text-xs leading-relaxed text-muted">Cek tagihan, unduh e-SPPT, &amp; bayar online.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+           CTA
+           ============================================================ -->
+    <section id="kontak" class="relative overflow-hidden py-24">
+      <div class="pointer-events-none absolute inset-0 bg-green/8"></div>
+      <div class="pointer-events-none absolute inset-0 field-grid opacity-40"></div>
+      <div
+        class="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green/15 blur-[120px]">
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green to-transparent">
+      </div>
+
+      <div class="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
+        <div
+          class="reveal-on-scroll inline-flex items-center gap-2 rounded-full border border-green/30 bg-green/10 px-4 py-1.5 text-xs font-600 uppercase tracking-[0.15em] text-green">
+          <svg class="h-3.5 w-3.5">
+            <use href="#i-spark" />
+          </svg>
+          Mulai Transformasi
+        </div>
+        <h2 class="reveal-on-scroll mt-6 font-display text-3xl font-700 leading-tight text-balance sm:text-5xl"
+          style="transition-delay: 0.08s">
+          Siap melampaui target PBB-P2 <span class="text-green"><em class="font-500 italic">tahun ini?</em></span>
+        </h2>
+        <p class="reveal-on-scroll mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft"
+          style="transition-delay: 0.16s">
+          Tingkatkan sistem informasi PBB Anda ke level berikutnya tanpa disrupsi operasional — pengalaman
+          layanan digital terbaik bagi warga, sekaligus penerimaan daerah yang teramankan.
+        </p>
+        <div class="reveal-on-scroll mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          style="transition-delay: 0.24s">
+          <a href="mailto:halo@sim-pbb.id?subject=Konsultasi%20SIM-PBB%20SMART!"
+            class="group inline-flex items-center justify-center gap-2 rounded-full bg-green px-8 py-4 text-base font-700 text-white shadow-glow transition-all hover:bg-green-deep">
+            <span>Jadwalkan Konsultasi Teknis</span>
+            <svg class="h-5 w-5 transition-transform group-hover:translate-x-1">
+              <use href="#i-arrow" />
+            </svg>
+          </a>
+          <a href="#fitur"
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-line-strong/70 bg-card/60 px-8 py-4 text-base font-700 text-ink backdrop-blur-sm transition-all hover:border-green/50 hover:text-green">Lihat
+            Modul Lengkap</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="border-t border-line/70 bg-paper-2 py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+        <div class="flex items-center gap-2.5">
+          <span class="grid h-9 w-9 place-items-center rounded-lg border border-line-strong/70 bg-card"><svg
+              class="h-5 w-5 text-muted">
+              <use href="#i-compass" />
+            </svg></span>
+          <span class="font-display text-xl font-700 text-ink">SIM-PBB<span class="text-green"> SMART!</span></span>
+        </div>
+        <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-500 text-muted">
+          <a href="#piutang" class="transition-colors hover:text-ink">Pemutakhiran</a>
+          <a href="#fitur" class="transition-colors hover:text-ink">Modul Inti</a>
+          <a href="#ekosistem" class="transition-colors hover:text-ink">Ekosistem</a>
+          <a href="#kontak" class="transition-colors hover:text-ink">Kontak</a>
+        </nav>
+      </div>
+      <div
+        class="mt-8 flex flex-col items-center justify-between gap-3 border-t border-line/70 pt-6 text-center md:flex-row md:text-left">
+        <p class="text-xs text-muted">&copy; <span id="year">2026</span> SmartPBB · Tata kelola Pajak Daerah &amp;
+          PBB-P2.</p>
+        <p class="font-mono text-[10px] uppercase tracking-widest text-muted/70">Dirancang untuk Bapenda modern ·
+          SISMIOP-ready</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== MINIMAL INTERACTION SCRIPT ===================== -->
+  <script>
+    (function () {
+      // live year
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+
+      // navbar scrolled state
+      var nav = document.getElementById('nav');
+      var onScroll = function () {
+        if (window.scrollY > 16) {
+          nav.classList.add('bg-paper/85', 'backdrop-blur-md', 'border-b', 'border-line/60', 'shadow-sm');
+        } else {
+          nav.classList.remove('bg-paper/85', 'backdrop-blur-md', 'border-b', 'border-line/60', 'shadow-sm');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // mobile menu
+      var btn = document.getElementById('menu-btn');
+      var menu = document.getElementById('mobile-menu');
+      var open = false;
+      var setMenu = function (state) {
+        open = state;
+        menu.classList.toggle('hidden', !open);
+        btn.innerHTML = open
+          ? '<svg class="h-5 w-5 text-ink"><use href="#i-close"/></svg>'
+          : '<svg class="h-5 w-5 text-ink"><use href="#i-menu"/></svg>';
+      };
+      btn.addEventListener('click', function () { setMenu(!open); });
+      menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+      // scroll reveal
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal-on-scroll').forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+
 </html>
